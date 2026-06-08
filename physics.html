@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中物理 · 基础知识清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f3f5; --card: rgba(248,249,251,0.85); --ink: #3d4248;
+  --accent: #8a9bb5; --accent-light: #f0f2f6; --accent-dark: #6b7d98;
+  --border: #d8dce2; --border-light: #e4e7ec; --muted: #8b9098;
+  --tag-bg: #edf0f4; --radius: 10px;
+  --font-heading: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-math: "Cambria Math", "Latin Modern Math", "Times New Roman", serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.85;font-size:15px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 30% 20%, rgba(138,155,181,0.08) 0%, transparent 50%),radial-gradient(ellipse at 70% 80%, rgba(138,155,181,0.06) 0%, transparent 50%);opacity:0.6}
+
+.topbar{position:sticky;top:0;z-index:100;background:rgba(242,243,245,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;gap:4px;padding:0 16px;flex-wrap:wrap}
+.topbar a{display:block;padding:10px 16px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:.15s;font-family:var(--font-heading)}
+.topbar a:hover,.topbar a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.topbar .back{color:var(--accent);font-weight:600}
+
+.hero{position:relative;z-index:1;text-align:center;padding:48px 20px 36px;background:linear-gradient(180deg, #f6f7f9 0%, #f2f3f5 100%);border-bottom:1px solid var(--border-light)}
+.hero::after{content:'';display:block;margin:24px auto 0;width:50px;height:2px;background:var(--accent);opacity:0.5}
+.hero h1{font-family:var(--font-heading);font-size:32px;font-weight:700;letter-spacing:3px}
+.hero .sub{margin-top:8px;font-size:14px;color:var(--muted);font-family:var(--font-heading)}
+.container{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:32px 24px 80px}
+
+.grade-section{margin-bottom:52px}
+.grade-head{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.grade-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0;font-family:var(--font-heading);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.grade-head h2{font-family:var(--font-heading);font-size:22px;font-weight:700}
+.grade-head .subtitle{font-size:13px;color:var(--muted);margin-left:4px}
+
+.chapter{background:var(--card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:var(--radius);border:1px solid var(--border-light);margin-bottom:14px;box-shadow:0 1px 4px rgba(61,66,72,0.04);transition:box-shadow .2s;overflow:hidden}
+.chapter:hover{box-shadow:0 3px 14px rgba(61,66,72,0.08)}
+.chapter.open{border-left:3px solid var(--accent)}
+.chapter-head{padding:14px 20px;cursor:pointer;font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px;user-select:none;font-family:var(--font-heading)}
+.chapter-head .num{color:var(--accent);font-size:13px;font-weight:400;min-width:22px}
+.chapter-head .tag{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--tag-bg);color:var(--muted);white-space:nowrap;font-family:var(--font-body);font-weight:400}
+.chapter-head .arrow{margin-left:auto;transition:.25s;color:var(--muted);font-size:11px}
+.chapter.open .chapter-head .arrow{transform:rotate(180deg);color:var(--accent)}
+.chapter-body{display:none;padding:4px 24px 20px}
+.chapter.open .chapter-body{display:block}
+.chapter-body ul{padding-left:20px}.chapter-body li{margin:5px 0}
+.chapter-body li strong{color:var(--accent-dark)}
+
+.fml{display:inline-block;background:#f0f2f5;padding:1px 7px;border-radius:3px;font-family:var(--font-math);font-style:italic;color:#5a6880;font-size:14px}
+
+.callout{padding:13px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:14px;line-height:1.75}
+.callout.important{background:var(--accent-light);border-left:4px solid var(--accent)}
+.callout.important::before{content:"★ 核心  ";color:var(--accent);font-weight:700;font-size:12px}
+.callout.tip{background:#f4f6f8;border-left:3px solid #9ba8b8}
+.callout.tip::before{content:" 提示  ";color:#9ba8b8;font-weight:700;font-size:12px}
+.callout.pitfall{background:#fef9f5;border-left:3px solid #c4947a}
+.callout.pitfall::before{content:"⚠ 易错  ";color:#c4947a;font-weight:700;font-size:12px}
+
+.diagram{text-align:center;margin:20px 0;padding:14px 8px;background:#fafbfc;border:1px dashed var(--border-light);border-radius:6px}
+.diagram svg{max-width:100%;height:auto}
+.diagram-caption{font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--font-heading)}
+
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+.tbl th{background:#f0f2f6;padding:8px 12px;text-align:center;font-weight:600;font-family:var(--font-heading)}
+.tbl td{padding:7px 12px;text-align:center;border-top:1px solid var(--border-light)}
+.tbl tr:nth-child(even) td{background:#fafbfc}
+
+.pitfall-list{counter-reset:pf}.pitfall-list li{counter-increment:pf;margin:8px 0;padding-left:8px}
+.pitfall-list li::marker{content:"#"counter(pf) "  ";color:var(--accent);font-weight:700}
+
+.back-top{position:fixed;bottom:28px;right:28px;z-index:200;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:0 2px 10px rgba(138,155,181,0.3);opacity:0;transition:.3s;pointer-events:none}
+.back-top.show{opacity:1;pointer-events:auto}
+
+.footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border-light);font-family:var(--font-heading)}
+.footer a{color:var(--accent);text-decoration:none}
+
+@media(max-width:640px){.hero h1{font-size:24px}.container{padding:20px 12px 60px}.topbar a{padding:8px 10px;font-size:11px}.chapter-head{padding:12px 14px;font-size:14px}.chapter-body{padding:4px 14px 16px}}
+@media print{.topbar,.back-top{display:none}.chapter{break-inside:avoid;box-shadow:none;border:1px solid #ddd}.chapter-body{display:block!important}body{font-size:13px;background:#fff}}
+</style>
+</head>
+<body>
+
+<nav class="topbar"><a href="index.html" class="back">← 首页</a><a href="#g8">八年级</a><a href="#g9">九年级</a><a href="#formulas">公式汇总</a><a href="#pitfalls">易错 Top 10</a></nav>
+
+<header class="hero"><h1>初中物理 · 基础知识清单</h1><p class="sub">八年级 → 九年级 · 人教版 · 声光力热电</p></header>
+
+<div class="container">
+
+<!-- ====== 八年级 ====== -->
+<section class="grade-section" id="g8">
+<div class="grade-head"><div class="grade-badge" style="background:#8a9bb5;">八</div><h2>八年级</h2><span class="subtitle">（上·下两册）</span></div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">一</span>机械运动 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>长度测量</strong>：基本单位 米(m)。1km=10³m，1dm=10⁻¹m，1cm=10⁻²m，1mm=10⁻³m，1μm=10⁻⁶m，1nm=10⁻⁹m。刻度尺读数要估读到分度值下一位。</li>
+      <li><strong>参照物</strong>：判断物体是否运动，需选取参照物。运动和静止是相对的。</li>
+      <li><strong>速度</strong>：<span class="fml">v = s / t</span>。1m/s = 3.6km/h。匀速直线运动中 v 不变。</li>
+      <li><strong>平均速度</strong>：总路程 ÷ 总时间，不是速度的平均值。</li>
+    </ul>
+    <div class="callout pitfall">平均速度 ≠ 速度的平均！如先以 4m/s 走 100m，再以 6m/s 走 100m，平均速度不是 5m/s，而是 200/(25+16.7) ≈ 4.8m/s。</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">二</span>声现象 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>声音的产生</strong>：由物体振动产生。振动停止，发声停止。</li>
+      <li><strong>传播</strong>：需要介质（固体 > 液体 > 气体），真空不能传声。声速 340m/s（15°C 空气）。</li>
+      <li><strong>声音三要素</strong>：<strong>音调</strong>（频率决定，频率越高音调越高）、<strong>响度</strong>（振幅决定，振幅越大响度越大）、<strong>音色</strong>（波形决定，区分不同发声体）。</li>
+      <li><strong>超声波与次声波</strong>：>20000Hz 为超声波（B 超、声呐）；&lt;20Hz 为次声波（地震、海啸监测）。</li>
+      <li><strong>噪声控制</strong>：声源处减弱、传播途中减弱、人耳处减弱。</li>
+    </ul>
+    <div class="callout pitfall">"声音越大"指的是响度大，不是音调高！女高音的"高"是音调高，不是响度大。两者容易混淆。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">三</span>物态变化 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">六种物态变化：熔化（固→液，吸热）、凝固（液→固，放热）、汽化（液→气，吸热）、液化（气→液，放热）、升华（固→气，吸热）、凝华（气→固，放热）。</div>
+    <ul>
+      <li><strong>晶体 vs 非晶体</strong>：晶体有固定熔点（冰 0°C、海波 48°C）；非晶体没有（蜡、玻璃、沥青）。</li>
+      <li><strong>沸腾条件</strong>：① 达到沸点 ② 继续吸热。沸点与气压有关，气压越高沸点越高（高压锅原理）。</li>
+      <li><strong>蒸发</strong>：在任何温度下都可发生，只在液体表面。影响因素：温度、表面积、空气流速。</li>
+      <li><strong>液化方式</strong>：降低温度、压缩体积（如液化气罐）。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">四</span>光现象 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram"><svg viewBox="0 0 460 250" width="460" height="250" id="reflection-svg">
+      <line x1="60" y1="200" x2="420" y2="200" stroke="#8a9bb5" stroke-width="2"/>
+      <line x1="230" y1="30" x2="230" y2="200" stroke="#8a9bb5" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="235" y="28" font-size="12" fill="#8a9bb5">法线</text>
+      <line x1="120" y1="200" x2="230" y2="100" stroke="#3d4248" stroke-width="1.8"/>
+      <line x1="230" y1="100" x2="370" y2="200" stroke="#3d4248" stroke-width="1.8" stroke-dasharray="4,2"/>
+      <polygon points="120,200 130,193 127,203" fill="#3d4248"/>
+      <polygon points="370,200 360,193 363,203" fill="#3d4248"/>
+      <text x="150" y="148" font-size="13" fill="#3d4248" font-weight="600">入射光线</text>
+      <text x="295" y="148" font-size="13" fill="#3d4248" font-weight="600">反射光线</text>
+      <text x="195" y="192" font-size="12" fill="#c4947a">∠i</text>
+      <text x="248" y="192" font-size="12" fill="#c4947a">∠r</text>
+      <text x="90" y="218" font-size="12" fill="#3d4248">反射定律：∠i = ∠r · 三线共面 · 两线分居</text>
+    </svg><div class="diagram-caption">光的反射定律 · 入射角 = 反射角</div></div>
+    <div class="callout important">光的反射定律：① 反射光线、入射光线和法线在同一平面内（三线共面）；② 反射光线和入射光线分居法线两侧；③ 反射角 = 入射角。</div>
+    <ul>
+      <li><strong>镜面反射 vs 漫反射</strong>：都遵循反射定律。镜面反射从一个方向看亮，漫反射从各个方向都能看到。</li>
+      <li><strong>平面镜成像</strong>：正立、等大、虚像，像与物关于镜面对称。像到镜面的距离 = 物到镜面的距离。</li>
+      <li><strong>光的折射</strong>：光从空气斜射入水/玻璃中，折射角 &lt; 入射角（向法线偏折）。垂直入射时传播方向不变。</li>
+    </ul>
+    <div class="diagram"><svg viewBox="0 0 280 220" width="280" height="220" id="refraction-svg">
+      <line x1="40" y1="120" x2="240" y2="120" stroke="#8a9bb5" stroke-width="2"/>
+      <text x="8" y="108" font-size="12" fill="#8a9bb5">空气</text>
+      <text x="8" y="200" font-size="12" fill="#8a9bb5">水/玻璃</text>
+      <line x1="140" y1="30" x2="140" y2="210" stroke="#8a9bb5" stroke-width="0.8" stroke-dasharray="4,3"/>
+      <text x="144" y="28" font-size="11" fill="#8a9bb5">法线</text>
+      <line x1="80" y1="120" x2="140" y2="120" stroke="#3d4248" stroke-width="1.8"/>
+      <line x1="140" y1="120" x2="200" y2="190" stroke="#3d4248" stroke-width="1.8"/>
+      <text x="95" y="112" font-size="12" fill="#3d4248">入射光</text>
+      <text x="208" y="198" font-size="12" fill="#3d4248">折射光</text>
+      <text x="130" y="102" font-size="11" fill="#c4947a">∠i</text>
+      <text x="170" y="158" font-size="11" fill="#c4947a">∠r</text>
+      <text x="148" y="140" font-size="10" fill="#c4947a">∠r &lt; ∠i</text>
+    </svg><div class="diagram-caption">光的折射 · 从空气进入水中，折射角 < 入射角</div></div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">五</span>透镜及其应用 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">凸透镜成像规律：<br>u > 2f → 倒立缩小实像（照相机）<br>u = 2f → 倒立等大实像<br>f &lt; u &lt; 2f → 倒立放大实像（投影仪）<br>u = f → 不成像<br>u &lt; f → 正立放大虚像（放大镜）</div>
+    <ul><li><strong>近视眼</strong>：像成在视网膜前，用凹透镜矫正。<strong>远视眼</strong>：像成在视网膜后，用凸透镜矫正。</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">六</span>质量与密度 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">密度公式：<span class="fml">ρ = m / V</span>。单位：kg/m³ 或 g/cm³。1g/cm³ = 10³ kg/m³。水的密度 ρ水 = 1.0×10³ kg/m³。</div>
+    <ul><li><strong>质量</strong>是物体的属性，不随位置、形状、状态改变。天平使用：左物右码。</li></ul>
+    <div class="callout pitfall">密度是物质的性质，与物体的质量和体积无关！不能说"质量越大密度越大"，同种物质密度不变。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">七</span>力 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>力的作用效果</strong>：改变物体的形状、改变物体的运动状态。力的三要素：大小、方向、作用点。</li>
+      <li><strong>重力</strong>：<span class="fml">G = mg</span>（g ≈ 9.8N/kg ≈ 10N/kg）。方向竖直向下，作用点在重心。</li>
+      <li><strong>弹力</strong>：弹簧测力计原理——在弹性限度内，弹簧的伸长量与拉力成正比（胡克定律 F = kx）。</li>
+      <li><strong>摩擦力</strong>：方向与相对运动（趋势）方向相反。增大有益摩擦：增大压力、使接触面粗糙。减小有害摩擦：加润滑油、变滑动为滚动。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">八</span>运动和力 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram"><svg viewBox="0 0 360 200" width="360" height="200" id="force-svg">
+      <rect x="110" y="80" width="80" height="50" fill="#f0f2f6" stroke="#3d4248" stroke-width="2" rx="4"/>
+      <text x="150" y="110" font-size="13" fill="#3d4248" text-anchor="middle" font-weight="600">物体</text>
+      <line x1="190" y1="105" x2="290" y2="105" stroke="#c4947a" stroke-width="2.5"/>
+      <polygon points="290,105 278,99 278,111" fill="#c4947a"/>
+      <text x="240" y="98" font-size="12" fill="#c4947a" font-weight="600">F（推力）</text>
+      <line x1="110" y1="95" x2="20" y2="95" stroke="#8a9bb5" stroke-width="2.5"/>
+      <polygon points="20,95 32,89 32,101" fill="#8a9bb5"/>
+      <text x="40" y="88" font-size="12" fill="#8a9bb5" font-weight="600">f（摩擦力）</text>
+      <line x1="150" y1="130" x2="150" y2="170" stroke="#4a8a5a" stroke-width="2.5"/>
+      <polygon points="150,170 144,158 156,158" fill="#4a8a5a"/>
+      <text x="156" y="165" font-size="12" fill="#4a8a5a" font-weight="600">G</text>
+      <line x1="150" y1="80" x2="150" y2="50" stroke="#4a8a5a" stroke-width="2.5"/>
+      <polygon points="150,50 144,62 156,62" fill="#4a8a5a"/>
+      <text x="156" y="55" font-size="12" fill="#4a8a5a" font-weight="600">N（支持力）</text>
+    </svg><div class="diagram-caption">物体受力分析 · 推力 F、摩擦力 f、重力 G、支持力 N</div></div>
+    <div class="callout important">牛顿第一定律（惯性定律）：一切物体在没有受到力的作用时，总保持静止或匀速直线运动状态。<br>惯性：一切物体都有保持原来运动状态不变的性质。惯性只与质量有关，质量越大惯性越大。</div>
+    <ul><li><strong>二力平衡</strong>：作用在同一物体上的两个力，大小相等、方向相反、在同一直线上。平衡力作用下物体静止或匀速直线运动。</li></ul>
+    <div class="callout pitfall">惯性是性质不是力！不能说"受到惯性"或"惯性力"，只能说"由于惯性"或"具有惯性"。惯性与速度无关！</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">九</span>压强 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important"><span class="fml">p = F / S</span>（固体压强）&emsp;<span class="fml">p = ρgh</span>（液体压强）</div>
+    <ul><li><strong>增大压强</strong>：增大压力/减小受力面积（刀刃、图钉尖）。<strong>减小压强</strong>：减小压力/增大受力面积（书包宽带、履带）。</li>
+    <li><strong>大气压</strong>：托里拆利实验，标准大气压 1.013×10⁵Pa = 760mmHg。海拔越高气压越低（沸点越低）。</li>
+    <li><strong>流体压强与流速</strong>：流速越大压强越小（飞机升力、站台安全线）。</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十</span>浮力 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">阿基米德原理：<span class="fml">F浮 = G排 = ρ液gV排</span><br>浮力只与 ρ液 和 V排 有关，与物体密度、形状、浸没深度无关！</div>
+    <ul><li><strong>沉浮条件</strong>：F浮 > G（上浮）、F浮 = G（悬浮/漂浮）、F浮 &lt; G（下沉）。</li></ul>
+    <div class="callout pitfall">物体浸没越深，浮力不变！（V排 已等于 V物）。潜水艇靠改变自身重力实现沉浮，不是改变浮力。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十一</span>功和机械能 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">功：<span class="fml">W = Fs</span>（力 × 力的方向上移动的距离，单位 J）<br>功率：<span class="fml">P = W / t</span>（单位 W，1W = 1J/s）</div>
+    <ul><li><strong>不做功的三种情况</strong>：有力无距离（推墙不动）、有距离无力（惯性滑行）、力与距离垂直（提着水桶水平走）。</li>
+    <li><strong>机械能</strong> = 动能 + 势能（重力势能 + 弹性势能）。动能与质量和速度有关，重力势能与质量和高度有关。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十二</span>简单机械 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">杠杆平衡：<span class="fml">F₁L₁ = F₂L₂</span>（动力×动力臂 = 阻力×阻力臂）<br>机械效率：<span class="fml">η = W有用 / W总 × 100%</span>，η 永远 &lt; 1（因为有额外功）</div>
+    <ul><li><strong>定滑轮</strong>：不省力，改变力的方向。<strong>动滑轮</strong>：省一半力，不改变方向。<strong>滑轮组</strong>：既省力又可改变方向。</li></ul>
+  </div>
+</div>
+</section>
+
+<!-- ====== 九年级 ====== -->
+<section class="grade-section" id="g9">
+<div class="grade-head"><div class="grade-badge" style="background:#7a8fa5;">九</div><h2>九年级</h2><span class="subtitle">（全一册）</span></div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十三</span>内能 <span class="tag">九全</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>分子动理论</strong>：物质由分子组成；分子在不停地做无规则运动（扩散现象）；分子间有引力和斥力。</li>
+    <li><strong>内能</strong>：物体内部所有分子动能与分子势能的总和。一切物体都有内能。改变方式：做功和热传递。</li></ul>
+    <div class="callout important">比热容：<span class="fml">Q = cmΔt</span>。c 是物质特性，c水 = 4.2×10³ J/(kg·°C)。</div>
+    <ul><li><strong>热值</strong>：<span class="fml">Q = mq</span>（固体/液体）或 Q = Vq（气体）。热机效率 η = W有用 / Q总。</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十四</span>电流和电路 <span class="tag">九全</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>串联</strong>：电流只有一条路径，各用电器互相影响。<strong>并联</strong>：多条路径，各支路互不影响。</li>
+    <li><strong>电流</strong>：单位 A。串联 I₁ = I₂；并联 I = I₁ + I₂。电流表串连接入，正进负出。</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十五</span>电压 电阻 <span class="tag">九全</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>电压</strong>：单位 V。串联 U = U₁ + U₂；并联 U = U₁ = U₂。电压表并连接入。</li>
+    <li><strong>电阻</strong>：单位 Ω。导体电阻与材料、长度、横截面积、温度有关，与电压和电流无关！</li></ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十六</span>欧姆定律 <span class="tag">九全</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">欧姆定律：<span class="fml">I = U / R</span>。串联总电阻 R = R₁ + R₂；并联总电阻 1/R = 1/R₁ + 1/R₂（并联总电阻小于任一支路电阻）。</div>
+    <div class="diagram"><svg viewBox="0 0 360 240" width="360" height="240" id="ohm-svg">
+      <line x1="60" y1="200" x2="340" y2="200" stroke="#8a9bb5" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="60" y2="40" stroke="#8a9bb5" stroke-width="1.5"/>
+      <polygon points="340,200 330,196 330,204" fill="#8a9bb5"/>
+      <polygon points="60,40 56,50 64,50" fill="#8a9bb5"/>
+      <text x="345" y="204" font-size="12" fill="#8a9bb5">U</text><text x="54" y="36" font-size="12" fill="#8a9bb5">I</text>
+      <text x="48" y="218" font-size="11" fill="#8a9bb5">O</text>
+    </svg><div class="diagram-caption">欧姆定律 U-I 图像（定值电阻）</div></div>
+    <div class="callout pitfall">R = U/I 不能理解为"电阻与电压成正比"！电阻是导体的性质，不随电压变化。U-I 图像是过原点的一条直线。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十七</span>电功率 <span class="tag">九全</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">电功（电能）：<span class="fml">W = UIt = Pt</span>（单位 J，1kW·h = 3.6×10⁶J）<br>电功率：<span class="fml">P = UI = W/t = I²R = U²/R</span>（单位 W）<br>焦耳定律：<span class="fml">Q = I²Rt</span>（电流热效应）</div>
+    <div class="callout pitfall">额定功率 vs 实际功率——额定功率是灯泡上标的功率（正常工作时的功率），实际功率取决于实际电压。灯泡的亮度由实际功率决定！</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十八</span>电与磁 <span class="tag">九全</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>奥斯特实验</strong>：通电导线周围存在磁场（电生磁）。</li>
+    <li><strong>安培定则（右手螺旋定则）</strong>：右手握住螺线管，四指指向电流方向，拇指所指为 N 极。</li>
+    <li><strong>电磁感应</strong>：闭合电路的一部分导体在磁场中做切割磁感线运动时，产生感应电流（法拉第，磁生电→发电机原理）。</li>
+    <li><strong>电动机</strong>原理：通电导体在磁场中受力（左手定则）。</li></ul>
+    <div class="callout pitfall">电动机原理是"电→力"（通电导体在磁场中受力），发电机原理是"磁→电"（电磁感应），二者容易搞混！</div>
+  </div>
+</div>
+</section>
+
+<!-- ====== 公式汇总 ====== -->
+<section id="formulas"><div class="grade-head"><div class="grade-badge" style="background:#8a9bb5;">式</div><h2>物理公式汇总</h2></div>
+<div class="chapter open"><div class="chapter-head" onclick="this.parentElement.classList.toggle('open')">力学公式 <span class="arrow">▼</span></div><div class="chapter-body">
+<table class="tbl"><tr><th>公式</th><th>含义</th><th>单位</th></tr>
+<tr><td><span class="fml">v = s/t</span></td><td>速度 = 路程/时间</td><td>m/s</td></tr>
+<tr><td><span class="fml">ρ = m/V</span></td><td>密度 = 质量/体积</td><td>kg/m³</td></tr>
+<tr><td><span class="fml">G = mg</span></td><td>重力 = 质量×g</td><td>N</td></tr>
+<tr><td><span class="fml">p = F/S</span></td><td>压强 = 压力/受力面积</td><td>Pa</td></tr>
+<tr><td><span class="fml">p = ρgh</span></td><td>液体压强</td><td>Pa</td></tr>
+<tr><td><span class="fml">F浮 = ρ液gV排</span></td><td>阿基米德原理</td><td>N</td></tr>
+<tr><td><span class="fml">W = Fs</span></td><td>功 = 力×距离</td><td>J</td></tr>
+<tr><td><span class="fml">P = W/t</span></td><td>功率 = 功/时间</td><td>W</td></tr>
+<tr><td><span class="fml">F₁L₁ = F₂L₂</span></td><td>杠杆平衡</td><td>—</td></tr>
+<tr><td><span class="fml">η = W有用/W总</span></td><td>机械效率</td><td>—</td></tr>
+</table></div></div>
+<div class="chapter open"><div class="chapter-head" onclick="this.parentElement.classList.toggle('open')">热学·电学公式 <span class="arrow">▼</span></div><div class="chapter-body">
+<table class="tbl"><tr><th>公式</th><th>含义</th><th>单位</th></tr>
+<tr><td><span class="fml">Q = cmΔt</span></td><td>热量 = 比热容×质量×温差</td><td>J</td></tr>
+<tr><td><span class="fml">Q = mq</span></td><td>热量 = 质量×热值</td><td>J</td></tr>
+<tr><td><span class="fml">I = U/R</span></td><td>欧姆定律</td><td>A</td></tr>
+<tr><td><span class="fml">P = UI</span></td><td>电功率 = 电压×电流</td><td>W</td></tr>
+<tr><td><span class="fml">W = UIt</span></td><td>电功 = 电压×电流×时间</td><td>J</td></tr>
+<tr><td><span class="fml">Q = I²Rt</span></td><td>焦耳定律（电热）</td><td>J</td></tr>
+</table></div></div>
+</section>
+
+<!-- ====== 易错 Top 10 ====== -->
+<section id="pitfalls"><div class="grade-head"><div class="grade-badge" style="background:#c4947a;">!</div><h2>物理易错点 Top 10</h2></div>
+<div class="chapter open"><div class="chapter-body">
+<ol class="pitfall-list">
+<li><strong>惯性不是力</strong>——不能说"受到惯性作用"或"惯性力"，只能说"由于惯性"或"具有惯性"。惯性只与质量有关。</li>
+<li><strong>平衡力 vs 相互作用力</strong>——平衡力作用在同一物体上；相互作用力作用在两个不同物体上（A对B，B对A）。</li>
+<li><strong>压力 ≠ 重力</strong>——只有当物体放在水平面上且无其他力时，压力才等于重力。放在斜面上时压力 &lt; 重力。</li>
+<li><strong>浮力与深度无关</strong>——物体完全浸没后，V排不变，浮力不变。潜水艇靠改变自身重力（不是浮力）实现沉浮。</li>
+<li><strong>平均速度 ≠ 速度的平均</strong>——平均速度 = 总路程 ÷ 总时间。</li>
+<li><strong>密度是物质特性</strong>——不能说"质量越大密度越大"，同种物质密度不变（与质量和体积无关）。</li>
+<li><strong>电阻是导体性质</strong>——不能说"电阻与电压成正比"，R=U/I 是定义式不是决定式。</li>
+<li><strong>额定功率 vs 实际功率</strong>——额定功率是正常工作时的功率（不变），实际功率随实际电压变化。灯泡亮度由实际功率决定。</li>
+<li><strong>电动机 vs 发电机原理</strong>——电动机：通电导体在磁场中受力（电→力）；发电机：电磁感应（磁→电）。不能混淆。</li>
+<li><strong>做功的两个必要条件</strong>——有力且在力的方向上有距离。提着水桶在水平路上走，提力不做功（力与距离垂直）。</li>
+</ol></div></div>
+</section>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer class="footer"><a href="index.html">← 返回首页</a>&emsp;初中物理基础知识清单 · 人教版 · 中考复习用</footer>
+
+<script>
+(function(){
+var c=document.getElementById('ohm-svg');
+if(c){var pl=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+pl.setAttribute('points','60,200 100,170 150,130 200,90 260,50 320,20');
+pl.setAttribute('fill','none');pl.setAttribute('stroke','#c4947a');pl.setAttribute('stroke-width','2.5');
+c.appendChild(pl);
+var t=document.createElementNS('http://www.w3.org/2000/svg','text');
+t.setAttribute('x','280');t.setAttribute('y','30');t.setAttribute('font-size','12');t.setAttribute('fill','#c4947a');t.setAttribute('font-weight','600');t.textContent='R=U/I (不变)';
+c.appendChild(t);}
+var bt=document.getElementById('backTop');
+window.addEventListener('scroll',function(){bt.classList.toggle('show',window.scrollY>400);});
+var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.topbar a[href^="#"]');
+window.addEventListener('scroll',function(){var cur='';secs.forEach(function(s){if(window.scrollY>=s.offsetTop-120)cur=s.id;});links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});});
+})();
+</script>
+</body>
+</html>

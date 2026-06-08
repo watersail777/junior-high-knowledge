@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中道德与法治 · 基础知识清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f4f2f5; --card: #faf8fb; --ink: #3d3a42;
+  --accent: #9b8aaa; --accent-light: #f2f0f5; --accent-dark: #6b5a7a;
+  --border: #d8d2dc; --border-light: #e8e3eb; --muted: #8b8690;
+  --tag-bg: #f0edf3; --radius: 10px;
+  --font-heading: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.85;font-size:15px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 30% 25%, rgba(155,138,170,0.08) 0%, transparent 50%),radial-gradient(ellipse at 70% 75%, rgba(155,138,170,0.05) 0%, transparent 50%)}
+
+.topbar{position:sticky;top:0;z-index:100;background:rgba(244,242,245,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;gap:4px;padding:0 16px;flex-wrap:wrap}
+.topbar a{display:block;padding:10px 16px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:.15s;font-family:var(--font-heading)}
+.topbar a:hover,.topbar a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.topbar .back{color:var(--accent);font-weight:600}
+
+.hero{position:relative;z-index:1;text-align:center;padding:48px 20px 36px;background:linear-gradient(180deg, #f7f5f8 0%, #f4f2f5 100%);border-bottom:1px solid var(--border-light)}
+.hero::after{content:'';display:block;margin:24px auto 0;width:50px;height:2px;background:var(--accent);opacity:0.5}
+.hero h1{font-family:var(--font-heading);font-size:32px;font-weight:700;letter-spacing:3px}
+.hero .sub{margin-top:8px;font-size:14px;color:var(--muted);font-family:var(--font-heading)}
+.container{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:32px 24px 80px}
+
+.grade-section{margin-bottom:52px}
+.grade-head{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.grade-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0;font-family:var(--font-heading);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.grade-head h2{font-family:var(--font-heading);font-size:22px;font-weight:700}
+.grade-head .subtitle{font-size:13px;color:var(--muted);margin-left:4px}
+
+.qa-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border-light);margin-bottom:14px;box-shadow:0 1px 4px rgba(61,58,66,0.04);transition:box-shadow .2s;overflow:hidden}
+.qa-card:hover{box-shadow:0 3px 14px rgba(61,58,66,0.08)}
+.qa-card.open{border-left:3px solid var(--accent)}
+.qa-head{padding:14px 20px;cursor:pointer;font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px;user-select:none;font-family:var(--font-heading)}
+.qa-head .q{color:var(--accent);font-size:13px;font-weight:400;min-width:22px}
+.qa-head .arrow{margin-left:auto;transition:.25s;color:var(--muted);font-size:11px}
+.qa-card.open .qa-head .arrow{transform:rotate(180deg);color:var(--accent)}
+.qa-body{display:none;padding:4px 24px 20px}
+.qa-card.open .qa-body{display:block}
+
+.answer{font-size:14px;line-height:1.9}
+.answer .key{color:var(--accent-dark);font-weight:600}
+.answer .template{display:block;background:#f7f5f9;padding:10px 14px;border-radius:6px;margin:8px 0;font-size:13px;border-left:3px solid var(--accent)}
+
+.compare{display:flex;gap:16px;margin:12px 0;flex-wrap:wrap}
+.compare>div{flex:1;min-width:200px;background:#faf8fb;padding:12px 16px;border-radius:8px;border:1px solid var(--border-light)}
+.compare>div h4{font-family:var(--font-heading);font-size:14px;margin-bottom:6px;color:var(--accent-dark)}
+.compare>div ul{padding-left:16px;font-size:13px}
+
+.callout{padding:13px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:14px;line-height:1.75}
+.callout.important{background:var(--accent-light);border-left:4px solid var(--accent)}
+.callout.important::before{content:"★ 答题模板  ";color:var(--accent);font-weight:700;font-size:12px}
+.callout.pitfall{background:#fef9f5;border-left:3px solid #c4947a}
+.callout.pitfall::before{content:"⚠ 易混  ";color:#c4947a;font-weight:700;font-size:12px}
+
+.pitfall-list{counter-reset:pf}.pitfall-list li{counter-increment:pf;margin:8px 0;padding-left:8px}
+.pitfall-list li::marker{content:"#"counter(pf) "  ";color:var(--accent);font-weight:700}
+
+.back-top{position:fixed;bottom:28px;right:28px;z-index:200;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:0 2px 10px rgba(155,138,170,0.3);opacity:0;transition:.3s;pointer-events:none}
+.back-top.show{opacity:1;pointer-events:auto}
+
+.footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border-light);font-family:var(--font-heading)}
+.footer a{color:var(--accent);text-decoration:none}
+
+@media(max-width:640px){.hero h1{font-size:24px}.container{padding:20px 12px 60px}.topbar a{padding:8px 10px;font-size:11px}.qa-head{padding:12px 14px;font-size:14px}.qa-body{padding:4px 14px 16px}.compare{flex-direction:column}}
+@media print{.topbar,.back-top{display:none}.qa-card{break-inside:avoid;box-shadow:none;border:1px solid #ddd}.qa-body{display:block!important}body{font-size:13px;background:#fff}}
+</style>
+</head>
+<body>
+
+<nav class="topbar"><a href="index.html" class="back">← 首页</a><a href="#psych">心理篇</a><a href="#moral">道德篇</a><a href="#law">法律篇</a><a href="#nation">国情篇</a><a href="#pitfalls">易错辨析</a></nav>
+
+<header class="hero"><h1>初中道德与法治 · 基础知识清单</h1><p class="sub">心理 · 道德 · 法律 · 国情 · 人教版 · 问答模式</p></header>
+
+<div class="container">
+
+<!-- ====== 心理篇 ====== -->
+<section class="grade-section" id="psych">
+<div class="grade-head"><div class="grade-badge" style="background:#9b8aaa;">七</div><h2>心理篇（七年级）</h2><span class="subtitle">认识自我 · 情绪管理 · 人际交往</span></div>
+
+<div class="qa-card open">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q1</span>如何正确认识自己？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p>从<span class="key">生理、心理、社会</span>等方面认识自己。途径：</p>
+    <p>① <span class="key">自我评价</span>——观察和分析自己的特点；</p>
+    <p>② <span class="key">他人评价</span>——用理性的心态面对他人评价，既不盲从也不忽视。</p>
+    <p>认识自己是一个<span class="key">过程</span>，人的发展变化决定了我们需要不断更新对自己的认识。</p>
+    <div class="template">答题要点：全面认识自己 → 接纳自己 → 完善自己（扬长避短、改正缺点、激发潜能）</div>
+  </div></div>
+</div>
+
+<div class="qa-card open">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q2</span>如何调控情绪？（常考）<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p>情绪是<span class="key">复杂多样</span>的，基本类型：喜、怒、哀、惧。青春期情绪特点：反应强烈、波动大、细腻、闭锁。</p>
+    <p><span class="key">调节情绪的方法</span>（4 种）：</p>
+    <p>① 改变认知评价 ② 转移注意 ③ 合理宣泄（不伤害自己和他人）④ 放松训练</p>
+    <div class="template">答题模板：先说明情绪的影响（积极/消极）→ 再写调节方法（至少写两种）→ 升华到"做情绪的主人"</div>
+  </div></div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q3</span>如何与朋友/老师/父母交往？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p><span class="key">友谊的特质</span>：亲密、平等、双向、精神相遇。友谊不能没有原则（不能不加分辨地为朋友做任何事）。</p>
+    <p><span class="key">师生交往</span>：教学相长、亦师亦友。正确对待老师的批评——是关心和爱护。</p>
+    <p><span class="key">亲子矛盾</span>：原因——独立意识与依赖心理的矛盾（青春期心理断乳）。解决——沟通、理解、换位思考。</p>
+  </div></div>
+</div>
+</section>
+
+<!-- ====== 道德篇 ====== -->
+<section class="grade-section" id="moral">
+<div class="grade-head"><div class="grade-badge" style="background:#8a7a9a;">八</div><h2>道德篇（八年级上）</h2><span class="subtitle">社会生活 · 责任 · 诚信 · 关爱</span></div>
+
+<div class="qa-card open">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q4</span>为什么要讲诚信？如何做？（高频）<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p><span class="key">诚信的重要性</span>：</p>
+    <p>① 对个人——安身立命之本，是融入社会的"通行证"；</p>
+    <p>② 对企业——无形资产，企业形象和信誉；</p>
+    <p>③ 对社会/国家——促进社会文明，提高国家形象。</p>
+    <p><span class="key">践行诚信</span>：树立诚信意识、运用诚信智慧（平衡隐私与诚实）、珍惜个人诚信记录。</p>
+    <div class="template">答题模板：引用社会主义核心价值观中的"诚信" → 从个人到社会的递进分析 → 提出具体做法</div>
+  </div></div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q5</span>责任是什么？如何做负责任的人？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p><span class="key">责任</span>是一个人分内应该做的事情。来源：对他人的承诺、职业要求、道德规范、法律规定等。</p>
+    <p>承担责任<span class="key">代价与回报</span>：付出时间、精力、金钱，可能被误解；收获他人的尊重、能力提升、精神满足。</p>
+    <p><span class="key">做一个负责任的人</span>：自觉承担责任（不言代价与回报）→ 学会选择并承担 → 主动关心社会。</p>
+  </div></div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q6</span>如何理解关爱他人与服务社会？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p><span class="key">关爱</span>是社会和谐稳定的润滑剂和正能量。关爱他人也是关爱自己。</p>
+    <p><span class="key">服务社会</span>体现人生价值，促进全面发展。形式：参加公益活动（志愿者、社区服务等）。</p>
+  </div></div>
+</div>
+</section>
+
+<!-- ====== 法律篇 ====== -->
+<section class="grade-section" id="law">
+<div class="grade-head"><div class="grade-badge" style="background:#7a6a8a;">法</div><h2>法律篇（八年级下）</h2><span class="subtitle">宪法 · 权利义务 · 法治</span></div>
+
+<div class="qa-card open">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q7</span>为什么宪法是根本法？（必考）<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p><span class="key">宪法是国家的根本法</span>，原因：</p>
+    <p>① <span class="key">内容上</span>——规定国家生活中的全局性、根本性问题；</p>
+    <p>② <span class="key">效力上</span>——具有最高的法律效力（一切法律法规不得与宪法相抵触）；</p>
+    <p>③ <span class="key">制定和修改程序上</span>——比普通法律更严格。</p>
+    <p>宪法是<span class="key">公民权利保障书</span>，是治国安邦的总章程。国家的一切权力属于人民。</p>
+    <div class="template">答题模板：宪法地位（根本法、最高法律效力）→ 与普通法的关系 → 我们要增强宪法意识</div>
+  </div></div>
+</div>
+
+<div class="qa-card open">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q8</span>公民有哪些基本权利和义务？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <div class="compare">
+      <div><h4>基本权利</h4><ul>
+        <li>平等权</li><li>政治权利和自由（选举权与被选举权）</li><li>人身自由（最基本权利）</li><li>社会经济与文化教育权利（受教育权既是权利也是义务）</li>
+      </ul></div>
+      <div><h4>基本义务</h4><ul>
+        <li>遵守宪法法律</li><li>维护国家统一和民族团结</li><li>依法服兵役</li><li>依法纳税</li><li>受教育（权利+义务）</li>
+      </ul></div>
+    </div>
+    <div class="callout important">权利义务一致性：公民既是权利的享有者，又是义务的承担者。没有无义务的权利，也没有无权利的义务。</div>
+  </div></div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q9</span>如何理解法治与自由的关系？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p><span class="key">法治与自由相互联系，不可分割</span>。法治标定了自由的边界——自由不是为所欲为，它受道德、纪律、法律的约束。</p>
+    <p>法治是<span class="key">自由的保障</span>——法律保护公民的合法自由和权利不受侵犯。</p>
+    <p><span class="key">全面依法治国</span>的总目标：建设中国特色社会主义法治体系，建设社会主义法治国家。</p>
+  </div></div>
+</div>
+</section>
+
+<!-- ====== 国情篇 ====== -->
+<section class="grade-section" id="nation">
+<div class="grade-head"><div class="grade-badge" style="background:#6a5a7a;">九</div><h2>国情篇（九年级）</h2><span class="subtitle">改革开放 · 共同富裕 · 生态文明 · 国际视野</span></div>
+
+<div class="qa-card open">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q10</span>改革开放的意义？（高频）<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p>改革开放是<span class="key">强国之路</span>，是决定当代中国命运的关键抉择，是当代中国最鲜明的特色。</p>
+    <p>① 极大解放和发展了社会生产力；</p>
+    <p>② 人民生活显著改善，实现了从温饱到全面小康的历史性跨越；</p>
+    <p>③ 综合国力显著增强，国际地位显著提高。</p>
+    <div class="template">答题模板：改革开放的地位（关键抉择、强国之路）→ 三大成就（经济、人民生活、国际地位）→ 新时代改革开放不停步</div>
+  </div></div>
+</div>
+
+<div class="qa-card open">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q11</span>如何实现共同富裕？我国基本经济制度是什么？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p><span class="key">我国基本经济制度</span>：</p>
+    <p>① <span class="key">公有制为主体、多种所有制经济共同发展</span>（所有制）；</p>
+    <p>② <span class="key">按劳分配为主体、多种分配方式并存</span>（分配制度）；</p>
+    <p>③ <span class="key">社会主义市场经济体制</span>（经济体制）。</p>
+    <p><span class="key">共同富裕</span>是中国特色社会主义的本质要求。坚持以人民为中心的发展思想，让改革发展成果更多更公平惠及全体人民。</p>
+  </div></div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q12</span>为什么要建设生态文明？（绿色发展）<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p>① 生态环境是关系党的使命宗旨的重大<span class="key">政治问题</span>，也是关系民生的重大社会问题。</p>
+    <p>② 坚持<span class="key">人与自然和谐共生</span>。绿水青山就是金山银山。</p>
+    <p>③ 走<span class="key">绿色发展</span>道路，坚持节约资源和保护环境的基本国策。建设资源节约型、环境友好型社会。</p>
+  </div></div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q13</span>如何理解文化自信与文化多样性？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p><span class="key">文化自信</span>是一个国家、一个民族发展中更基本、更深沉、更持久的力量。坚定文化自信，事关国运兴衰。</p>
+    <p><span class="key">对待文化多样性</span>：各民族文化各有千秋，以开放包容的心态，学习和借鉴优秀外来文化，同时要坚守中华文化立场。</p>
+    <p>传承和弘扬<span class="key">中华传统美德</span>，践行<span class="key">社会主义核心价值观</span>（富强民主文明和谐/自由平等公正法治/爱国敬业诚信友善）。</p>
+  </div></div>
+</div>
+
+<div class="qa-card">
+  <div class="qa-head" onclick="this.parentElement.classList.toggle('open')"><span class="q">Q14</span>中国在国际舞台上的角色？<span class="arrow">▼</span></div>
+  <div class="qa-body"><div class="answer">
+    <p>① 中国是<span class="key">和平、合作、负责任</span>的大国形象。</p>
+    <p>② 积极参与全球治理，提出<span class="key">人类命运共同体</span>理念。</p>
+    <p>③ 坚持<span class="key">独立自主的和平外交政策</span>，走和平发展道路，倡导合作共赢。</p>
+  </div></div>
+</div>
+</section>
+
+<!-- ====== 易错辨析 ====== -->
+<section id="pitfalls">
+<div class="grade-head"><div class="grade-badge" style="background:#c4947a;">!</div><h2>易混概念辨析 Top 10</h2></div>
+<div class="qa-card open"><div class="qa-body">
+<ol class="pitfall-list">
+<li><strong>权利 vs 权力</strong>——权利（right）是个人的、可放弃的（如选举权）；权力（power）是国家的、不可随意放弃的（如政府权力）。</li>
+<li><strong>道德 vs 法律</strong>——道德靠内心信念和社会舆论约束，范围更广；法律靠国家强制力保证实施，是最刚性的社会规则。</li>
+<li><strong>宪法 vs 普通法律</strong>——宪法是根本法（"母法"），规定根本性问题，具有最高法律效力。普通法律是宪法的具体化。</li>
+<li><strong>自尊 vs 自信</strong>——自尊是尊重自己，维护人格尊严；自信是相信自己的能力。自尊是自信的基础。</li>
+<li><strong>一般违法 vs 犯罪</strong>——一般违法（民事违法、行政违法）社会危害较轻；犯罪（刑事违法）具有严重社会危害性，触犯刑法。</li>
+<li><strong>公民 vs 人民</strong>——公民是法律概念（有国籍的人），人民是政治概念。公民范围 > 人民（公民包括依法被剥夺政治权利的人）。</li>
+<li><strong>情绪 vs 情感</strong>——情绪是短暂的、不稳定的（喜怒哀惧）；情感是持久的、稳定的（爱国主义、责任感）。</li>
+<li><strong>公有制为主体 vs 多种所有制</strong>——公有制是主体（国有经济+集体经济+混合所有制中的国有和集体成分），非公有制是重要组成部分（个体、私营、外资）。</li>
+<li><strong>共同富裕 ≠ 同步富裕/同时富裕</strong>——共同富裕是目标，鼓励一部分人先富起来，先富带动后富。不是平均主义。</li>
+<li><strong>文化自信 ≠ 文化自负</strong>——文化自信是既传承弘扬自身文化，又以开放态度学习外来优秀文化。不是排外的文化封闭。</li>
+</ol></div></div>
+</section>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer class="footer"><a href="index.html">← 返回首页</a>&emsp;初中道德与法治基础知识清单 · 人教版 · 中考复习用</footer>
+
+<script>
+(function(){
+var bt=document.getElementById('backTop');
+window.addEventListener('scroll',function(){bt.classList.toggle('show',window.scrollY>400);});
+var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.topbar a[href^="#"]');
+window.addEventListener('scroll',function(){var cur='';secs.forEach(function(s){if(window.scrollY>=s.offsetTop-120)cur=s.id;});links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});});
+})();
+</script>
+</body>
+</html>

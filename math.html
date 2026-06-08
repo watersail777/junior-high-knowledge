@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中数学 · 基础知识清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f5f0ea; --card: #faf7f3; --ink: #4a3f38;
+  --accent: #c49a8a; --accent-light: #f5ede6;
+  --secondary: #a89880; --secondary-light: #f0ebe4;
+  --highlight: #d4b896; --highlight-light: #faf5ee;
+  --border: #e5d5c0; --border-light: #f0e6d6;
+  --muted: #9b8e84; --tag-bg: #f7f0e4;
+  --shadow: 0 1px 3px rgba(61,50,43,0.06);
+  --shadow-hover: 0 3px 12px rgba(61,50,43,0.1);
+  --radius: 8px;
+  --font-heading: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-math: "Cambria Math", "Latin Modern Math", "Times New Roman", serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.85;font-size:15px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:0.5}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(253,247,237,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;gap:4px;padding:0 16px;flex-wrap:wrap}
+.topbar a{display:block;padding:10px 16px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:.15s;font-family:var(--font-heading)}
+.topbar a:hover,.topbar a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.hero{position:relative;z-index:1;text-align:center;padding:56px 20px 44px;background:linear-gradient(180deg, #fef9f2 0%, #fdf7ed 100%);border-bottom:1px solid var(--border-light)}
+.hero::after{content:'';display:block;margin:28px auto 0;width:60px;height:2px;background:var(--accent);opacity:0.5}
+.hero h1{font-family:var(--font-heading);font-size:34px;font-weight:700;color:var(--ink);letter-spacing:3px}
+.hero .sub{margin-top:8px;font-size:14px;color:var(--muted);font-family:var(--font-heading)}
+.hero .decorative{display:inline-block;margin:0 8px;color:var(--accent);opacity:0.6}
+.container{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:36px 24px 80px}
+.grade-section{margin-bottom:60px}
+.grade-head{display:flex;align-items:center;gap:14px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.grade-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0;font-family:var(--font-heading);box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.g7 .grade-badge{background:#c9a898}.g8 .grade-badge{background:#b89888}.g9 .grade-badge{background:#a88878}
+.grade-head h2{font-family:var(--font-heading);font-size:22px;font-weight:700}
+.grade-head .subtitle{font-size:13px;color:var(--muted);margin-left:4px}
+.chapter{background:var(--card);border-radius:var(--radius);border:1px solid var(--border-light);margin-bottom:14px;box-shadow:var(--shadow);transition:box-shadow .2s;overflow:hidden}
+.chapter:hover{box-shadow:var(--shadow-hover)}
+.chapter.open{border-left:3px solid var(--accent)}
+.chapter-head{padding:15px 20px;cursor:pointer;font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px;user-select:none;font-family:var(--font-heading)}
+.chapter-head .num{color:var(--accent);font-size:13px;font-weight:400;min-width:24px}
+.chapter-head .tag{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--tag-bg);color:var(--muted);white-space:nowrap;font-family:var(--font-body);font-weight:400}
+.chapter-head .arrow{margin-left:auto;transition:.25s;color:var(--muted);font-size:11px}
+.chapter.open .chapter-head .arrow{transform:rotate(180deg);color:var(--accent)}
+.chapter-body{display:none;padding:4px 24px 22px}
+.chapter.open .chapter-body{display:block}
+.chapter-body ul{padding-left:20px}.chapter-body li{margin:5px 0}
+.chapter-body li strong{color:var(--accent)}
+.fml{display:inline-block;background:#faf6ef;padding:1px 7px;border-radius:3px;font-family:var(--font-math);font-style:italic;color:#8b3a5e;font-size:14px}
+.callout{padding:13px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:14px;line-height:1.75}
+.callout.important{background:var(--accent-light);border-left:4px solid var(--accent)}
+.callout.important::before{content:"★ 重点  ";color:var(--accent);font-weight:700;font-size:12px}
+.callout.tip{background:var(--secondary-light);border-left:3px solid var(--secondary)}
+.callout.tip::before{content:" 提示  ";color:var(--secondary);font-weight:700;font-size:12px}
+.callout.pitfall{background:#faf5ee;border-left:3px solid var(--highlight)}
+.callout.pitfall::before{content:"⚠ 易错  ";color:var(--highlight);font-weight:700;font-size:12px}
+.diagram{text-align:center;margin:20px 0;padding:14px 8px;background:#fefcf8;border:1px dashed var(--border-light);border-radius:6px}
+.diagram svg{max-width:100%;height:auto}
+.diagram-caption{font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--font-heading)}
+.example{background:#fdfaf5;border:1px solid var(--border-light);border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px}
+.example .ex-label{font-size:11px;color:var(--accent);font-weight:600;margin-bottom:4px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+.tbl th{background:#faf6ef;padding:8px 12px;text-align:center;font-weight:600;font-family:var(--font-heading)}
+.tbl td{padding:7px 12px;text-align:center;border-top:1px solid var(--border-light)}
+.tbl tr:nth-child(even) td{background:#fefcf8}
+.quick-table{width:100%;border-collapse:collapse;font-size:14px}
+.quick-table td{padding:8px 12px;border-top:1px solid var(--border-light)}
+.quick-table td:first-child{font-weight:500;white-space:nowrap;color:var(--ink)}
+.quick-table tr:nth-child(even) td{background:#fefcf8}
+.back-top{position:fixed;bottom:28px;right:28px;z-index:200;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:0 2px 10px rgba(181,69,58,0.25);opacity:0;transition:.3s;pointer-events:none}
+.back-top.show{opacity:1;pointer-events:auto}.back-top:hover{background:#b09880}
+.footer{text-align:center;padding:32px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border-light);font-family:var(--font-heading)}
+@media(max-width:640px){.hero h1{font-size:24px;letter-spacing:1px}.hero{padding:36px 16px 28px}.container{padding:20px 12px 60px}.topbar a{padding:8px 10px;font-size:11px}.chapter-head{padding:12px 14px;font-size:14px}.chapter-body{padding:4px 14px 16px}.diagram{padding:8px 4px}}
+@media print{.topbar,.back-top{display:none}.chapter{break-inside:avoid;box-shadow:none;border:1px solid #ddd}.chapter-body{display:block!important}body{font-size:13px;background:#fff}.hero{padding:20px;border:none}}
+</style>
+</head>
+<body>
+
+<nav class="topbar" id="topbar">
+  <a href="#g7">七年级</a><a href="#g8">八年级</a><a href="#g9">九年级</a><a href="#quick">速查公式</a>
+</nav>
+
+<header class="hero">
+  <h1>初中数学 · 基础知识清单</h1>
+  <p class="sub"><span class="decorative">◆</span> 七年级 → 八年级 → 九年级 <span class="decorative">◆</span><br>人教版教材顺序 · 家教辅导用</p>
+</header>
+
+<div class="container">
+
+<!-- ====== 七年级 ====== -->
+<section class="grade-section g7" id="g7">
+<div class="grade-head"><div class="grade-badge">七</div><h2>七年级</h2><span class="subtitle">（上·下两册）</span></div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">一</span>有理数 <span class="tag">七上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>正数与负数</strong>：大于 0 的数是正数，小于 0 的数是负数。<em>0 既不是正数也不是负数</em>。</li>
+      <li><strong>数轴三要素</strong>：原点、正方向、单位长度。</li>
+      <li><strong>相反数</strong>：只有符号不同的两个数互为相反数。a 的相反数是 <span class="fml">−a</span>。数轴上，相反数关于原点对称。</li>
+      <li><strong>绝对值</strong>：|a| 表示数 a 的点到原点的距离。|a| ≥ 0，|a| = |−a|。</li>
+      <li><strong>有理数分类</strong>：整数（正整数、0、负整数）+ 分数（正分数、负分数）。有限小数和无限循环小数都是分数。</li>
+    </ul>
+    <div class="diagram">
+      <svg viewBox="0 0 500 80" width="500" height="80">
+        <line x1="35" y1="44" x2="465" y2="44" stroke="#5c4a3a" stroke-width="1.5"/>
+        <polygon points="465,44 453,40 453,48" fill="#5c4a3a"/>
+        <line x1="250" y1="38" x2="250" y2="50" stroke="#3d322b" stroke-width="1"/>
+        <text x="250" y="36" text-anchor="middle" font-size="12" fill="#3d322b">原点 0</text>
+        <line x1="162" y1="38" x2="162" y2="50" stroke="#3d322b" stroke-width="1"/>
+        <text x="162" y="36" text-anchor="middle" font-size="11" fill="#3d322b">−2</text>
+        <line x1="338" y1="38" x2="338" y2="50" stroke="#3d322b" stroke-width="1"/>
+        <text x="338" y="36" text-anchor="middle" font-size="11" fill="#3d322b">2</text>
+        <line x1="74" y1="38" x2="74" y2="50" stroke="#3d322b" stroke-width="1"/>
+        <text x="74" y="36" text-anchor="middle" font-size="11" fill="#3d322b">−4</text>
+        <line x1="426" y1="38" x2="426" y2="50" stroke="#3d322b" stroke-width="1"/>
+        <text x="426" y="36" text-anchor="middle" font-size="11" fill="#3d322b">4</text>
+        <line x1="162" y1="54" x2="162" y2="60" stroke="#c49a8a" stroke-width="2.5"/>
+        <line x1="250" y1="54" x2="250" y2="60" stroke="#c49a8a" stroke-width="2.5"/>
+        <text x="206" y="72" text-anchor="middle" font-size="11" fill="#c49a8a" font-weight="600">|−2| = 2  （距离）</text>
+      </svg>
+      <div class="diagram-caption">数轴 · 绝对值是点到原点的距离</div>
+    </div>
+    <div class="callout important">
+      <strong>加法法则</strong>：同号相加取相同符号，绝对值相加；异号相加取绝对值大的符号，绝对值相减。<br>
+      <strong>减法</strong>：减去一个数 = 加上它的相反数。 <span class="fml">a − b = a + (−b)</span><br>
+      <strong>乘法</strong>：同号得正，异号得负，绝对值相乘。几个数相乘，负因数有奇数个时积为负。<br>
+      <strong>除法</strong>：除以一个不为 0 的数 = 乘以它的倒数。
+    </div>
+    <div class="callout pitfall">负数的偶次幂是正数，奇次幂是负数。如 (−2)² = 4，但 −2² = −4（注意括号！）</div>
+    <ul><li><strong>科学记数法</strong>：a × 10ⁿ，其中 1 ≤ |a| &lt; 10。</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">二</span>整式的加减 <span class="tag">七上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>单项式</strong>：数或字母的积。如 <span class="fml">3x²y</span>（系数 3，次数 2+1=3）。</li>
+      <li><strong>多项式</strong>：几个单项式的和。次数最高项的次数就是多项式的次数。</li>
+      <li><strong>同类项</strong>：字母相同 + 相同字母的指数相同。合并时<span style="color:var(--accent);">系数相加，字母部分不变</span>。</li>
+      <li><strong>去括号</strong>：括号前是"+"不变号；括号前是"−"<span style="color:var(--accent);">各项都变号</span>。</li>
+    </ul>
+    <div class="callout pitfall">去括号时最容易漏乘！如 2(x−3y) = 2x−6y，不要只乘第一项。另外 −(a−b) = −a+b，不要忘记括号内后面的项也要变号。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">三</span>一元一次方程 <span class="tag">七上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important"><strong>解方程五步法</strong>：① 去分母 ② 去括号 ③ 移项（<span style="color:var(--accent);">过等号要变号！</span>）④ 合并同类项 ⑤ 系数化为 1</div>
+    <div class="callout pitfall">去分母时，<span style="color:var(--highlight);">不含分母的项也要乘</span>！例如：x/2 + 1 = x/3 → 两边乘 6 得 3x + 6 = 2x，不是 3x + 1 = 2x。</div>
+    <div class="example"><span class="ex-label">典型例题</span><br>某数加上 5 后乘以 2 等于 18，求该数。<br><strong>解</strong>：设该数为 x。2(x+5)=18 → x+5=9 → x=4。检验：2×(4+5)=18 ✓</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">四</span>几何图形初步 <span class="tag">七上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>直线、射线、线段</strong>：直线无端点，射线 1 个端点，线段 2 个端点（可度量）。</li>
+      <li><strong>两点之间线段最短</strong>（公理）。两点间线段的长度叫距离。</li>
+      <li><strong>线段中点</strong>：若 M 是 AB 中点，则 AM = MB = ½AB。</li>
+      <li><strong>角</strong>：1 周角 = 360°，1 平角 = 180°，1 直角 = 90°。1° = 60′，1′ = 60″。</li>
+      <li><strong>余角</strong>：和为 90°。同角（等角）的余角相等。</li>
+      <li><strong>补角</strong>：和为 180°。同角（等角）的补角相等。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">五</span>相交线与平行线 <span class="tag">七下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram">
+      <svg viewBox="0 0 460 250" width="460" height="250">
+        <line x1="30" y1="60" x2="430" y2="60" stroke="#5c4a3a" stroke-width="2.2"/>
+        <line x1="30" y1="190" x2="430" y2="190" stroke="#5c4a3a" stroke-width="2.2"/>
+        <text x="440" y="65" font-size="13" fill="#3d322b" font-weight="600">l₁</text>
+        <text x="440" y="195" font-size="13" fill="#3d322b" font-weight="600">l₂ ∥ l₁</text>
+        <line x1="110" y1="30" x2="340" y2="240" stroke="#c49a8a" stroke-width="2"/>
+        <circle cx="199" cy="60" r="4" fill="#3d322b"/><circle cx="269" cy="190" r="4" fill="#3d322b"/>
+        <text x="170" y="50" font-size="14" fill="#a89880" font-weight="700">1</text>
+        <text x="220" y="46" font-size="14" fill="#a89880" font-weight="700">2</text>
+        <text x="220" y="82" font-size="14" fill="#8a7a8a" font-weight="700">3</text>
+        <text x="170" y="82" font-size="14" fill="#8a7a8a" font-weight="700">4</text>
+        <text x="242" y="168" font-size="14" fill="#a89880" font-weight="700">5</text>
+        <text x="288" y="164" font-size="14" fill="#a89880" font-weight="700">6</text>
+        <text x="288" y="210" font-size="14" fill="#8a7a8a" font-weight="700">7</text>
+        <text x="242" y="210" font-size="14" fill="#8a7a8a" font-weight="700">8</text>
+        <text x="30" y="235" font-size="10.5" fill="#a89880">同位角：∠1=∠5，∠2=∠6，∠3=∠7，∠4=∠8</text>
+        <text x="220" y="235" font-size="10.5" fill="#8a7a8a">内错角：∠3=∠6，∠4=∠5</text>
+        <text x="340" y="235" font-size="10.5" fill="#d4b896">同旁内角：∠3+∠5=180°，∠4+∠6=180°</text>
+      </svg>
+      <div class="diagram-caption">三线八角 · 平行线的判定与性质</div>
+    </div>
+    <div class="callout important"><strong>判定</strong>（由角推平行）：同位角相等 / 内错角相等 / 同旁内角互补 → 两直线平行<br><strong>性质</strong>（由平行推角）：两直线平行 → 同位角相等 / 内错角相等 / 同旁内角互补</div>
+    <div class="callout pitfall">判定和性质容易搞混！判定是"由角的关系推出线平行"；性质是"已知线平行推出角的关系"。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">六</span>实数 <span class="tag">七下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>平方根</strong>：若 x² = a，则 x 是 a 的平方根。正数有 2 个平方根（互为相反数），负数无平方根。</li>
+      <li><strong>算术平方根</strong>：正数 a 的正平方根 <span class="fml">√a</span>。√a ≥ 0（非负性）。</li>
+      <li><strong>立方根</strong>：任何数都有唯一的立方根 <span class="fml">³√a</span>。</li>
+      <li><strong>无理数</strong>：无限不循环小数（π、√2、√3…）。实数 = 有理数 + 无理数。</li>
+    </ul>
+    <div class="callout pitfall">√16 = 4（不是 ±4！）算术平方根只有一个非负值。但解 x² = 16 时 x = ±4，两个都是平方根。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">七</span>平面直角坐标系 <span class="tag">七下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram">
+      <svg viewBox="0 0 360 300" width="360" height="300">
+        <line x1="50" y1="150" x2="320" y2="150" stroke="#5c4a3a" stroke-width="1.5"/>
+        <line x1="180" y1="20" x2="180" y2="280" stroke="#5c4a3a" stroke-width="1.5"/>
+        <polygon points="320,150 310,145 310,155" fill="#5c4a3a"/>
+        <polygon points="180,20 175,30 185,30" fill="#5c4a3a"/>
+        <text x="324" y="154" font-size="14" fill="#3d322b">x</text>
+        <text x="175" y="16" font-size="14" fill="#3d322b">y</text>
+        <text x="170" y="168" font-size="13" fill="#c49a8a" font-weight="600">O</text>
+        <text x="240" y="95" font-size="14" fill="#a89880" font-weight="700">一 (+,+)</text>
+        <text x="80"  y="95" font-size="14" fill="#a89880" font-weight="700">二 (−,+)</text>
+        <text x="80"  y="210" font-size="14" fill="#a89880" font-weight="700">三 (−,−)</text>
+        <text x="240" y="210" font-size="14" fill="#a89880" font-weight="700">四 (+,−)</text>
+        <circle cx="255" cy="100" r="4" fill="#c49a8a"/>
+        <text x="264" y="96" font-size="12" fill="#c49a8a" font-weight="600">A(3, 2)</text>
+        <line x1="255" y1="100" x2="255" y2="150" stroke="#c49a8a" stroke-width="0.7" stroke-dasharray="3"/>
+        <line x1="180" y1="100" x2="255" y2="100" stroke="#c49a8a" stroke-width="0.7" stroke-dasharray="3"/>
+      </svg>
+      <div class="diagram-caption">四个象限 · 点的坐标 (x, y)</div>
+    </div>
+    <ul>
+      <li>x 轴上的点纵坐标为 0；y 轴上的点横坐标为 0。</li>
+      <li><strong>对称</strong>：关于 x 轴对称，横坐标相同纵坐标互为相反数；关于 y 轴对称反之。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">八</span>二元一次方程组 <span class="tag">七下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important"><strong>代入消元法</strong>：从某个方程解出一个未知数，代入另一方程。<br><strong>加减消元法</strong>：使同一未知数的系数相等或互为相反数，两式相加或相减消元。</div>
+    <div class="example"><span class="ex-label">典型例题</span><br>解 { x + y = 10, 2x − y = 5 }<br>加减法：两式相加 → 3x = 15 → x = 5 → y = 5。</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">九</span>不等式与不等式组 <span class="tag">七下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram">
+      <svg viewBox="0 0 460 130" width="460" height="130">
+        <text x="50" y="18" font-size="13" fill="#3d322b" font-weight="600">x ≥ 2（实心点，向右）</text>
+        <line x1="50" y1="58" x2="410" y2="58" stroke="#5c4a3a" stroke-width="1.5"/>
+        <polygon points="410,58 398,54 398,62" fill="#5c4a3a"/>
+        <line x1="210" y1="48" x2="210" y2="68" stroke="#5c4a3a" stroke-width="1"/>
+        <text x="210" y="46" text-anchor="middle" font-size="11" fill="#3d322b">2</text>
+        <circle cx="210" cy="58" r="5" fill="#c49a8a"/>
+        <line x1="210" y1="58" x2="410" y2="58" stroke="#c49a8a" stroke-width="3"/>
+        <polygon points="410,58 398,54 398,62" fill="#c49a8a"/>
+        <text x="50" y="98" font-size="13" fill="#3d322b" font-weight="600">x &lt; −1（空心圈，向左）</text>
+        <line x1="50" y1="108" x2="410" y2="108" stroke="#5c4a3a" stroke-width="1.5"/>
+        <line x1="130" y1="98" x2="130" y2="118" stroke="#5c4a3a" stroke-width="1"/>
+        <text x="130" y="96" text-anchor="middle" font-size="11" fill="#3d322b">−1</text>
+        <circle cx="130" cy="108" r="5" fill="#fff" stroke="#c49a8a" stroke-width="2.5"/>
+        <line x1="50" y1="108" x2="130" y2="108" stroke="#c49a8a" stroke-width="3"/>
+        <polygon points="50,108 62,104 62,112" fill="#c49a8a"/>
+      </svg>
+      <div class="diagram-caption">不等式解集在数轴上的表示：≥、≤ 用实心；>、< 用空心</div>
+    </div>
+    <div class="callout important"><strong>不等式基本性质</strong>：① 两边同加（减）同一个数，不等号方向不变。② 两边同乘（除）同一个正数，不等号方向不变。③ 两边同乘（除）同一个<span style="color:var(--accent);">负数</span>，<span style="color:var(--accent);">不等号方向要改变</span>！</div>
+    <div class="callout pitfall">乘除负数忘记改变不等号方向，是绝对的高频错误！如 −2x > 6 → x &lt; −3（不等号由 > 变为 &lt;）。</div>
+    <ul><li><strong>不等式组口诀</strong>：同大取大，同小取小，大小小大中间找，大大小小无解了。</li></ul>
+  </div>
+</div>
+</section>
+
+<!-- ====== 八年级 ====== -->
+<section class="grade-section g8" id="g8">
+<div class="grade-head"><div class="grade-badge">八</div><h2>八年级</h2><span class="subtitle">（上·下两册）</span></div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十</span>三角形 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>三边关系</strong>：两边之和 > 第三边，两边之差 &lt; 第三边。</li>
+      <li><strong>内角和</strong>：180°。外角 = 不相邻两内角之和。</li>
+      <li><strong>重要线段</strong>：中线（重心）、高（垂心）、角平分线（内心）、中垂线（外心）。</li>
+    </ul>
+    <div class="callout important">n 边形内角和 = (n−2) × 180°；外角和 = 360°（任何凸多边形！）</div>
+    <div class="callout pitfall">判断三条线段能否构成三角形，只需检查"较短两边之和是否大于最长边"。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十一</span>全等三角形 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important"><strong>判定（5 种）</strong>：SSS / SAS / ASA / AAS / HL（仅 Rt△）</div>
+    <div class="callout pitfall">SSA（边边角）不能判定全等！两边和其中一边的对角对应相等，三角形可能有两种形状。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十二</span>轴对称 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>垂直平分线</strong>：过线段中点且垂直于线段。垂直平分线上的点到线段两端距离相等。</li>
+      <li><strong>等腰三角形</strong>：等边对等角。三线合一（顶角平分线 = 底边中线 = 底边上的高）。</li>
+      <li><strong>等边三角形</strong>：三边相等，三角均 60°。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十三</span>整式乘法与因式分解 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important"><strong>必背乘法公式</strong><br>平方差：<span class="fml">(a+b)(a−b) = a² − b²</span><br>完全平方：<span class="fml">(a±b)² = a² ± 2ab + b²</span></div>
+    <ul><li><strong>因式分解三步走</strong>：一提（公因式）→ 二套（平方差/完全平方/十字相乘）→ 三检查（不能再分）。</li></ul>
+    <div class="callout pitfall">x² + 4 在实数范围内不能分解！平方差公式需要减号。因式分解必须分解到底。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十四</span>分式 <span class="tag">八上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>分式有意义</strong>：分母 ≠ 0。分式值为 0：分子 = 0 且分母 ≠ 0。</li>
+    <li><strong>分式方程</strong>：<span style="color:var(--accent);">必须验根！</span>去分母可能产生增根。</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十五</span>二次根式 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>双重非负性</strong>：√a 中被开方数 a ≥ 0，且 √a ≥ 0。</li>
+    <li><strong>性质</strong>：√(a²) = |a|（注意取绝对值！）。</li></ul>
+    <div class="callout pitfall">√((−3)²) = |−3| = 3，不是 −3！去掉根号时要判断正负。</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十六</span>勾股定理 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram">
+      <svg viewBox="0 0 320 250" width="320" height="250" id="pythagoras-svg">
+        <polygon points="40,220 40,50 250,220" fill="#f5ede6" stroke="#c49a8a" stroke-width="2.2"/>
+        <rect x="40" y="198" width="20" height="20" fill="none" stroke="#c49a8a" stroke-width="1.2"/>
+        <text x="25" y="135" font-size="14" fill="#3d322b" font-style="italic">a（勾）</text>
+        <text x="135" y="242" font-size="14" fill="#3d322b" font-style="italic">b（股）</text>
+        <text x="152" y="118" font-size="15" fill="#c49a8a" font-weight="700" font-style="italic">c（弦）</text>
+        <text x="90" y="30" font-size="14" fill="#a89880" font-weight="700">a² + b² = c²</text>
+      </svg>
+      <div class="diagram-caption">勾股定理 · 直角三角形三边关系</div>
+    </div>
+    <div class="callout important">勾股定理：<span class="fml" style="font-size:16px;">a² + b² = c²</span>（c 为斜边）<br>逆定理：若三边满足 a² + b² = c²，则该三角形是直角三角形。</div>
+    <ul><li><strong>常用勾股数</strong>：(3,4,5)、(6,8,10)、(5,12,13)、(7,24,25)、(8,15,17)</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十七</span>平行四边形 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>性质</strong>：对边平行且相等，对角相等，邻角互补，对角线互相平分。</li>
+      <li><strong>判定</strong>：对边平行 / 对边相等 / 一组对边平行且相等 / 对角相等 / 对角线互相平分。</li>
+      <li><strong>矩形</strong>：对角线相等。Rt△ 斜边上的中线 = 斜边一半。</li>
+      <li><strong>菱形</strong>：对角线互相垂直且平分对角。面积 = ½ × 对角线乘积。</li>
+      <li><strong>正方形</strong>：兼具矩形和菱形的所有性质。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十八</span>一次函数 <span class="tag">八下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram">
+      <svg viewBox="0 0 460 340" width="460" height="340" id="linear-svg">
+        <defs><pattern id="glin" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0L0 0 0 25" fill="none" stroke="#ede4d6" stroke-width="0.5"/></pattern></defs>
+        <rect x="40" y="8" width="400" height="305" fill="url(#glin)"/>
+        <line x1="40" y1="280" x2="430" y2="280" stroke="#5c4a3a" stroke-width="1.5"/>
+        <line x1="120" y1="10" x2="120" y2="310" stroke="#5c4a3a" stroke-width="1.5"/>
+        <polygon points="430,280 420,276 420,284" fill="#5c4a3a"/>
+        <polygon points="120,10 116,20 124,20" fill="#5c4a3a"/>
+        <text x="434" y="284" font-size="13" fill="#3d322b">x</text>
+        <text x="116" y="8" font-size="13" fill="#3d322b">y</text>
+        <text x="108" y="296" font-size="12" fill="#c49a8a" font-weight="600">O</text>
+        <text x="360" y="60" font-size="14" fill="#c49a8a" font-weight="700">y = 2x + 1</text>
+        <text x="360" y="78" font-size="11" fill="#666">k=2(斜率)  b=1(截距)</text>
+      </svg>
+      <div class="diagram-caption">一次函数 y = kx + b · k 决定倾斜方向和程度 · b 是与 y 轴交点的纵坐标</div>
+    </div>
+    <div class="callout important"><strong>k > 0</strong>：直线上升，y 随 x 增大而增大。<strong>k &lt; 0</strong>：直线下降。<br><strong>|k| 越大</strong>：直线越陡。<strong>b</strong>：直线与 y 轴交点 (0, b)。b = 0 时为正比例函数，过原点。</div>
+  </div>
+</div>
+</section>
+
+<!-- ====== 九年级 ====== -->
+<section class="grade-section g9" id="g9">
+<div class="grade-head"><div class="grade-badge">九</div><h2>九年级</h2><span class="subtitle">（上·下两册）</span></div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十九</span>一元二次方程 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important"><strong>四种解法</strong>：① 直接开平方法 ② 配方法 ③ 公式法 ④ 因式分解法<br><strong>求根公式</strong>：<span class="fml">x = [−b ± √(b² − 4ac)] / 2a</span></div>
+    <div class="diagram">
+      <svg viewBox="0 0 430 290" width="430" height="290" id="vieta-svg">
+        <line x1="40" y1="240" x2="400" y2="240" stroke="#5c4a3a" stroke-width="1.5"/>
+        <line x1="120" y1="20" x2="120" y2="265" stroke="#5c4a3a" stroke-width="1.5"/>
+        <polygon points="400,240 392,236 392,244" fill="#5c4a3a"/>
+        <polygon points="120,20 116,28 124,28" fill="#5c4a3a"/>
+        <text x="404" y="244" font-size="13" fill="#3d322b">x</text>
+        <text x="116" y="18" font-size="13" fill="#3d322b">y</text>
+        <text x="310" y="80" font-size="12" fill="#3d322b" font-weight="600">韦达定理：</text>
+        <text x="310" y="100" font-size="12" fill="#c49a8a">x₁+x₂ = −b/a</text>
+        <text x="310" y="120" font-size="12" fill="#a89880">x₁·x₂ = c/a</text>
+      </svg>
+      <div class="diagram-caption">韦达定理 · 抛物线与 x 轴交点的横坐标与系数之间的关系</div>
+    </div>
+    <ul>
+      <li><strong>判别式</strong> Δ = b² − 4ac：> 0 两不等实根；= 0 两相等实根；&lt; 0 无实根。</li>
+      <li><strong>韦达定理</strong>：<span class="fml">x₁ + x₂ = −b/a</span>，<span class="fml">x₁·x₂ = c/a</span>。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">二十</span>二次函数 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>定义</strong>：<span class="fml">y = ax² + bx + c（a ≠ 0）</span>。图像是抛物线。</li>
+      <li><strong>顶点式</strong>：<span class="fml">y = a(x − h)² + k</span>，顶点 (h, k)，对称轴 x = h。</li>
+    </ul>
+    <div class="diagram">
+      <svg viewBox="0 0 460 340" width="460" height="340" id="quad1-svg">
+        <defs><pattern id="gq1" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0L0 0 0 30" fill="none" stroke="#ede4d6" stroke-width="0.5"/></pattern></defs>
+        <rect x="30" y="10" width="405" height="305" fill="url(#gq1)"/>
+        <line x1="30" y1="260" x2="425" y2="260" stroke="#5c4a3a" stroke-width="1.5"/>
+        <line x1="210" y1="10" x2="210" y2="320" stroke="#5c4a3a" stroke-width="1.5"/>
+        <polygon points="425,260 415,256 415,264" fill="#5c4a3a"/>
+        <polygon points="210,10 206,20 214,20" fill="#5c4a3a"/>
+        <text x="429" y="264" font-size="13" fill="#3d322b">x</text>
+        <text x="206" y="8" font-size="13" fill="#3d322b">y</text>
+        <text x="198" y="278" font-size="12" fill="#c49a8a" font-weight="600">O</text>
+        <text x="340" y="40" font-size="15" fill="#c49a8a" font-weight="700">y = x²</text>
+        <text x="340" y="58" font-size="11" fill="#666">a>0 开口向上</text>
+      </svg>
+      <div class="diagram-caption">y = x² 抛物线 · 对称轴为 y 轴 · 顶点在原点 · 开口向上</div>
+    </div>
+    <div class="diagram">
+      <svg viewBox="0 0 460 310" width="460" height="310" id="quad2-svg">
+        <defs><pattern id="gq2" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0L0 0 0 30" fill="none" stroke="#ede4d6" stroke-width="0.5"/></pattern></defs>
+        <rect x="30" y="8" width="405" height="280" fill="url(#gq2)"/>
+        <line x1="30" y1="240" x2="425" y2="240" stroke="#5c4a3a" stroke-width="1.5"/>
+        <line x1="210" y1="10" x2="210" y2="295" stroke="#5c4a3a" stroke-width="1.5"/>
+        <polygon points="425,240 415,236 415,244" fill="#5c4a3a"/>
+        <polygon points="210,10 206,20 214,20" fill="#5c4a3a"/>
+        <text x="429" y="244" font-size="13" fill="#3d322b">x</text>
+        <text x="206" y="8" font-size="13" fill="#3d322b">y</text>
+        <text x="198" y="258" font-size="12" fill="#c49a8a" font-weight="600">O</text>
+        <text x="315" y="200" font-size="12" fill="#a89880" font-weight="600">y=2x²(窄)</text>
+        <text x="315" y="218" font-size="12" fill="#d4b896" font-weight="600">y=½x²(宽)</text>
+        <text x="315" y="236" font-size="12" fill="#c49a8a" font-weight="600">y=−x²(向下)</text>
+        <text x="315" y="258" font-size="11" fill="#666">|a|越大开口越窄</text>
+      </svg>
+      <div class="diagram-caption">|a| 决定开口宽窄 · a 的符号决定开口方向</div>
+    </div>
+    <div class="callout important"><strong>对称轴</strong>：x = −b/(2a)。<strong>顶点</strong>：(−b/(2a), (4ac−b²)/(4a))。<br><strong>平移口诀</strong>："左加右减，上加下减"——y = a(x−h)² + k 中，h 控制左右平移，k 控制上下平移。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">廿一</span>旋转 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>中心对称</strong>：绕某点旋转 180° 后与自身重合。P(x, y) 关于原点对称 → P′(−x, −y)。</li></ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">廿二</span>圆 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram">
+      <svg viewBox="0 0 340 310" width="340" height="310" id="circle-svg">
+        <circle cx="170" cy="155" r="105" fill="none" stroke="#5c4a3a" stroke-width="2.2"/>
+        <circle cx="170" cy="155" r="4" fill="#3d322b"/>
+      </svg>
+      <div class="diagram-caption">圆的要素 · 圆心角 = 2 × 圆周角（同弧）</div>
+    </div>
+    <div class="callout important">
+      <strong>垂径定理</strong>：垂直于弦的直径平分弦且平分弦所对的两条弧。<br>
+      <strong>圆周角定理</strong>：同弧所对圆周角 = ½ 圆心角。直径所对圆周角 = 90°。<br>
+      <strong>切线性质</strong>：切线垂直于过切点的半径。切线长定理：圆外一点引两条切线长相等。<br>
+      <strong>圆内接四边形</strong>：对角互补（和为 180°）。
+    </div>
+    <ul><li>弧长 <span class="fml">l = nπr/180</span> &emsp; 扇形面积 <span class="fml">S = nπr²/360 = ½lr</span></li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">廿三</span>概率初步 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>P(A) = m/n</strong>（m：事件 A 包含的结果数，n：所有等可能结果总数，0 ≤ P ≤ 1）。</li>
+    <li><strong>列举法</strong>：树状图最直观，不重不漏是关键。</li></ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">廿四</span>反比例函数 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>定义</strong>：<span class="fml">y = k/x（k ≠ 0）</span>，等价于 xy = k。图像是<strong>双曲线</strong>。</li>
+    </ul>
+    <div class="diagram">
+      <svg viewBox="0 0 460 340" width="460" height="340" id="inverse-svg">
+        <defs><pattern id="ginv" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0L0 0 0 30" fill="none" stroke="#ede4d6" stroke-width="0.5"/></pattern></defs>
+        <rect x="30" y="8" width="410" height="315" fill="url(#ginv)"/>
+        <line x1="30" y1="170" x2="430" y2="170" stroke="#5c4a3a" stroke-width="1.5"/>
+        <line x1="220" y1="10" x2="220" y2="325" stroke="#5c4a3a" stroke-width="1.5"/>
+        <polygon points="430,170 420,166 420,174" fill="#5c4a3a"/>
+        <polygon points="220,10 216,20 224,20" fill="#5c4a3a"/>
+        <text x="434" y="174" font-size="13" fill="#3d322b">x</text>
+        <text x="216" y="8" font-size="13" fill="#3d322b">y</text>
+        <text x="210" y="188" font-size="12" fill="#c49a8a" font-weight="600">O</text>
+        <text x="270" y="40" font-size="14" fill="#c49a8a" font-weight="700">y = 1/x (k>0)</text>
+        <text x="270" y="58" font-size="11" fill="#666">第一、三象限各一支</text>
+        <text x="270" y="76" font-size="11" fill="#666">关于原点中心对称</text>
+      </svg>
+      <div class="diagram-caption">反比例函数 y = k/x（k>0）· 双曲线 · 两渐近线为坐标轴</div>
+    </div>
+    <div class="callout important"><strong>k > 0</strong>：图像在一、三象限，每象限内 y 随 x 增大而减小。<br><strong>k &lt; 0</strong>：图像在二、四象限，每象限内 y 随 x 增大而增大。<br><strong>k 的几何意义</strong>：双曲线上任一点向坐标轴作垂线，所得矩形面积 = |k|。</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">廿五</span>相似 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram">
+      <svg viewBox="0 0 380 220" width="380" height="220" id="similar-svg">
+        <text x="182" y="130" font-size="24" fill="#999">→</text>
+        <text x="160" y="150" font-size="11" fill="#999">相似比 k</text>
+        <text x="230" y="238" font-size="11" fill="#a89880">AB/A'B' = BC/B'C' = AC/A'C' = k</text>
+      </svg>
+      <div class="diagram-caption">相似三角形 · 对应角相等 · 对应边成比例</div>
+    </div>
+    <div class="callout important"><strong>判定（4 种）</strong>：AA / SAS / SSS / 平行截线。<br><strong>性质</strong>：对应线段比 = k；周长比 = k；<span style="color:var(--accent);">面积比 = k²</span>。</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">廿六</span>锐角三角函数 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="diagram">
+      <svg viewBox="0 0 460 230" width="460" height="230" id="trig-svg"></svg>
+      <div class="diagram-caption">三个特殊角的直角三角形 · 30° / 45° / 60° 的边比关系</div>
+    </div>
+    <div class="callout important"><strong>定义</strong>（在 Rt△ 中，∠C = 90°）：sin A = 对边/斜边 &emsp; cos A = 邻边/斜边 &emsp; tan A = 对边/邻边</div>
+    <table class="tbl">
+      <tr><th>角</th><th>sin</th><th>cos</th><th>tan</th></tr>
+      <tr><td>30°</td><td>1/2</td><td>√3/2</td><td>√3/3</td></tr>
+      <tr><td>45°</td><td>√2/2</td><td>√2/2</td><td>1</td></tr>
+      <tr><td>60°</td><td>√3/2</td><td>1/2</td><td>√3</td></tr>
+    </table>
+    <div class="callout pitfall">sin 30° = ½，不是 √3/2！sin 和 cos 在 30° 和 60° 的值刚好互换，容易记混。口诀："三十度，对边是斜边一半"。</div>
+    <ul><li><strong>互余关系</strong>：sin(90°−A) = cos A。&emsp;<strong>平方关系</strong>：sin²A + cos²A = 1。</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">廿七</span>投影与视图 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>三视图</strong>：主视图（正面）、俯视图（上面）、左视图（左面）。口诀：长对正、高平齐、宽相等。</li></ul>
+  </div>
+</div>
+</section>
+
+<!-- ====== 速查公式 ====== -->
+<section id="quick">
+<div class="grade-head"><div class="grade-badge" style="background:#c49a8a;">速</div><h2>常用公式速查</h2></div>
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')">代数公式 <span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <table class="quick-table">
+      <tr><td>平方差</td><td><span class="fml">a² − b² = (a+b)(a−b)</span></td></tr>
+      <tr><td>完全平方</td><td><span class="fml">(a±b)² = a² ± 2ab + b²</span></td></tr>
+      <tr><td>求根公式</td><td><span class="fml">x = (−b ± √(b²−4ac)) / 2a</span></td></tr>
+      <tr><td>韦达定理</td><td><span class="fml">x₁+x₂ = −b/a，x₁x₂ = c/a</span></td></tr>
+      <tr><td>幂运算</td><td><span class="fml">aᵐ·aⁿ=aᵐ⁺ⁿ；aᵐ÷aⁿ=aᵐ⁻ⁿ；(aᵐ)ⁿ=aᵐⁿ</span></td></tr>
+      <tr><td>二次函数顶点</td><td><span class="fml">x=−b/(2a), y=(4ac−b²)/(4a)</span></td></tr>
+    </table>
+  </div>
+</div>
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')">几何公式 <span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <table class="quick-table">
+      <tr><td>三角形面积</td><td>S = ½ × 底 × 高</td></tr>
+      <tr><td>矩形 / 平行四边形</td><td>S = 长×宽 / 底×高</td></tr>
+      <tr><td>菱形面积</td><td>S = ½ × 对角线₁ × 对角线₂</td></tr>
+      <tr><td>梯形面积</td><td>S = ½ × (上底+下底) × 高</td></tr>
+      <tr><td>圆周长 / 面积</td><td>C = 2πr；S = πr²</td></tr>
+      <tr><td>弧长 / 扇形</td><td>l = nπr/180；S = nπr²/360 = ½lr</td></tr>
+      <tr><td>勾股定理</td><td>a² + b² = c²（Rt△）</td></tr>
+      <tr><td>多边形内角和</td><td>(n−2) × 180°</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer class="footer">初中数学基础知识清单 · 按人教版教材顺序整理 · 适用于中考复习与家教辅导</footer>
+
+<!-- ====== JS: Accurate Function Plotting ====== -->
+<script>
+(function(){
+// ── helpers ──
+function Coord(ox, oy, sx, sy) {
+  return { x: function(mx) { return ox + mx * sx; }, y: function(my) { return oy - my * sy; } };
+}
+/** Sample f from x0 to x1 into "x,y x,y ..." string. Clamp y to [yLo, yHi] in SVG coords. */
+function sampleStr(f, x0, x1, c, n, yLo, yHi) {
+  var pts = [], step = (x1 - x0) / n;
+  for (var i = 0; i <= n; i++) {
+    var mx = x0 + i * step, my = f(mx);
+    if (isNaN(my) || !isFinite(my)) continue;
+    var sy = c.y(my);
+    if (sy < yLo || sy > yHi) continue;
+    pts.push(c.x(mx).toFixed(1) + ',' + sy.toFixed(1));
+  }
+  return pts.join(' ');
+}
+function ns(c,v){return c.x(v).toFixed(1);}
+function ny(c,v){return c.y(v).toFixed(1);}
+
+// ── 1. Linear: y = 2x + 1 ──
+(function(){
+  var svg = document.getElementById('linear-svg');
+  if(!svg) return;
+  var c = Coord(120, 280, 25, 25);
+  // Plot line from x=-5 to x=12
+  var pts = sampleStr(function(x){return 2*x+1;}, -5, 12, c, 200, 0, 340);
+  var line = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  line.setAttribute('points', pts);
+  line.setAttribute('fill','none'); line.setAttribute('stroke','#c49a8a'); line.setAttribute('stroke-width','2.8');
+  svg.appendChild(line);
+  // y-intercept (0,1)
+  var yi = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  yi.setAttribute('cx',ns(c,0)); yi.setAttribute('cy',ny(c,1)); yi.setAttribute('r','4'); yi.setAttribute('fill','#c49a8a');
+  svg.appendChild(yi);
+  var yit = document.createElementNS('http://www.w3.org/2000/svg','text');
+  yit.setAttribute('x',ns(c,0.3)); yit.setAttribute('y',ny(c,1)+4); yit.setAttribute('font-size','11'); yit.setAttribute('fill','#c49a8a'); yit.textContent='(0, b)';
+  svg.appendChild(yit);
+  // x-intercept (-0.5, 0) — only if visible
+  // slope triangle at x=4
+  var x1=4, y1=9, x2=6, y2=13;
+  var sg = document.createElementNS('http://www.w3.org/2000/svg','g');
+  sg.setAttribute('stroke','#a89880'); sg.setAttribute('stroke-width','1.2');
+  var h=document.createElementNS('http://www.w3.org/2000/svg','line');
+  h.setAttribute('x1',ns(c,x1)); h.setAttribute('y1',ny(c,y1)); h.setAttribute('x2',ns(c,x2)); h.setAttribute('y2',ny(c,y1)); sg.appendChild(h);
+  var v=document.createElementNS('http://www.w3.org/2000/svg','line');
+  v.setAttribute('x1',ns(c,x2)); v.setAttribute('y1',ny(c,y1)); v.setAttribute('x2',ns(c,x2)); v.setAttribute('y2',ny(c,y2)); sg.appendChild(v);
+  svg.appendChild(sg);
+  var st1 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  st1.setAttribute('x',ns(c,4.5)); st1.setAttribute('y',ny(c,y1)-4); st1.setAttribute('font-size','10'); st1.setAttribute('fill','#a89880'); st1.textContent='Δx';
+  svg.appendChild(st1);
+  var st2 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  st2.setAttribute('x',ns(c,x2)+4); st2.setAttribute('y',ny(c,11)); st2.setAttribute('font-size','10'); st2.setAttribute('fill','#a89880'); st2.textContent='Δy';
+  svg.appendChild(st2);
+  var st3 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  st3.setAttribute('x',ns(c,6.5)); st3.setAttribute('y',ny(c,10.5)); st3.setAttribute('font-size','11'); st3.setAttribute('fill','#a89880'); st3.setAttribute('font-weight','600'); st3.textContent='k=Δy/Δx';
+  svg.appendChild(st3);
+})();
+
+// ── 2. Quadratic y = x² ──
+(function(){
+  var svg = document.getElementById('quad1-svg');
+  if(!svg) return;
+  var c = Coord(210, 260, 35, 14);
+  // Sample from x=-4.5 to 4.5
+  var pts = sampleStr(function(x){return x*x;}, -4.5, 4.5, c, 250, 0, 380);
+  var curve = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  curve.setAttribute('points', pts);
+  curve.setAttribute('fill','none'); curve.setAttribute('stroke','#c49a8a'); curve.setAttribute('stroke-width','2.8');
+  svg.appendChild(curve);
+  // symmetry axis
+  var ax = document.createElementNS('http://www.w3.org/2000/svg','line');
+  ax.setAttribute('x1',ns(c,0)); ax.setAttribute('y1','15'); ax.setAttribute('x2',ns(c,0)); ax.setAttribute('y2','315');
+  ax.setAttribute('stroke','#c49a8a'); ax.setAttribute('stroke-width','0.8'); ax.setAttribute('stroke-dasharray','6,3');
+  svg.appendChild(ax);
+  var axt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  axt.setAttribute('x',ns(c,0.3)); axt.setAttribute('y','305'); axt.setAttribute('font-size','10'); axt.setAttribute('fill','#c49a8a'); axt.textContent='对称轴 x=0';
+  svg.appendChild(axt);
+  // vertex
+  var vx = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  vx.setAttribute('cx',ns(c,0)); vx.setAttribute('cy',ny(c,0)); vx.setAttribute('r','4'); vx.setAttribute('fill','#a89880');
+  svg.appendChild(vx);
+  var vxt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  vxt.setAttribute('x',ns(c,0.4)); vxt.setAttribute('y',ny(c,0)-8); vxt.setAttribute('font-size','11'); vxt.setAttribute('fill','#a89880'); vxt.setAttribute('font-weight','600'); vxt.textContent='顶点(0,0)';
+  svg.appendChild(vxt);
+})();
+
+// ── 3. Quadratic |a| effect ──
+(function(){
+  var svg = document.getElementById('quad2-svg');
+  if(!svg) return;
+  var c = Coord(210, 240, 30, 20);
+  // y = 2x² (narrow, green)
+  var p1 = sampleStr(function(x){return 2*x*x;}, -3.2, 3.2, c, 200, 0, 320);
+  var pl1 = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  pl1.setAttribute('points',p1); pl1.setAttribute('fill','none'); pl1.setAttribute('stroke','#a89880'); pl1.setAttribute('stroke-width','2.8');
+  svg.appendChild(pl1);
+  // y = 0.5x² (wide, gold)
+  var p2 = sampleStr(function(x){return 0.5*x*x;}, -5, 5, c, 200, 0, 320);
+  var pl2 = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  pl2.setAttribute('points',p2); pl2.setAttribute('fill','none'); pl2.setAttribute('stroke','#d4b896'); pl2.setAttribute('stroke-width','2.8');
+  svg.appendChild(pl2);
+  // y = -x² (opens down, red dashed)
+  var p3 = sampleStr(function(x){return -x*x;}, -4, 4, c, 200, 0, 320);
+  var pl3 = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  pl3.setAttribute('points',p3); pl3.setAttribute('fill','none'); pl3.setAttribute('stroke','#c49a8a'); pl3.setAttribute('stroke-width','2.5'); pl3.setAttribute('stroke-dasharray','8,4');
+  svg.appendChild(pl3);
+})();
+
+// ── 4. Inverse proportion y = 1/x ──
+(function(){
+  var svg = document.getElementById('inverse-svg');
+  if(!svg) return;
+  var c = Coord(220, 170, 50, 50);
+  // Branch 1: x > 0
+  var p1 = sampleStr(function(x){return 1/x;}, 0.15, 7, c, 300, -10, 350);
+  var pl1 = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  pl1.setAttribute('points',p1); pl1.setAttribute('fill','none'); pl1.setAttribute('stroke','#c49a8a'); pl1.setAttribute('stroke-width','3');
+  svg.appendChild(pl1);
+  // Branch 2: x < 0
+  var p2 = sampleStr(function(x){return 1/x;}, -7, -0.15, c, 300, -10, 350);
+  var pl2 = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  pl2.setAttribute('points',p2); pl2.setAttribute('fill','none'); pl2.setAttribute('stroke','#c49a8a'); pl2.setAttribute('stroke-width','3');
+  svg.appendChild(pl2);
+  // asymptote hints
+  var at1 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  at1.setAttribute('x','430'); at1.setAttribute('y','164'); at1.setAttribute('font-size','10'); at1.setAttribute('fill','#999'); at1.textContent='渐近线';
+  svg.appendChild(at1);
+  var at2 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  at2.setAttribute('x','230'); at2.setAttribute('y','16'); at2.setAttribute('font-size','10'); at2.setAttribute('fill','#999'); at2.textContent='渐近线';
+  svg.appendChild(at2);
+  // |k| rectangle hint at point (2, 0.5)
+  var rx=ns(c,1.2), ry=ny(c,0.833); // (1.2, 0.833) on curve
+  var rw=ns(c,2)-ns(c,1.2), rh=ny(c,0)-ny(c,0.833);
+  var rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  rect.setAttribute('x',ns(c,1.2)); rect.setAttribute('y',ny(c,0.833)); rect.setAttribute('width',(ns(c,2)-ns(c,1.2)).toFixed(1));
+  rect.setAttribute('height',(ny(c,0)-ny(c,0.833)).toFixed(1));
+  rect.setAttribute('fill','none'); rect.setAttribute('stroke','#a89880'); rect.setAttribute('stroke-width','1.2'); rect.setAttribute('stroke-dasharray','4,3');
+  svg.appendChild(rect);
+  var rt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  rt.setAttribute('x',ns(c,2.1)); rt.setAttribute('y',ny(c,0.4)); rt.setAttribute('font-size','10'); rt.setAttribute('fill','#a89880'); rt.textContent='|k|';
+  svg.appendChild(rt);
+})();
+
+// ── 5. Vieta: y = x² − 5x + 6 ──
+(function(){
+  var svg = document.getElementById('vieta-svg');
+  if(!svg) return;
+  var f = function(x){ return x*x - 5*x + 6; };
+  var c = Coord(120, 240, 40, 35);
+  // curve
+  var pts = sampleStr(f, 0.2, 4.8, c, 250, -20, 300);
+  var curve = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  curve.setAttribute('points',pts); curve.setAttribute('fill','none'); curve.setAttribute('stroke','#c49a8a'); curve.setAttribute('stroke-width','2.8');
+  svg.appendChild(curve);
+  // roots: x=2, x=3
+  function addRoot(mx, label, color) {
+    var ci = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    ci.setAttribute('cx',ns(c,mx)); ci.setAttribute('cy',ny(c,0)); ci.setAttribute('r','5'); ci.setAttribute('fill',color);
+    svg.appendChild(ci);
+    var ti = document.createElementNS('http://www.w3.org/2000/svg','text');
+    ti.setAttribute('x',ns(c,mx)); ti.setAttribute('y',ny(c,0)+16); ti.setAttribute('font-size','12'); ti.setAttribute('fill',color);
+    ti.setAttribute('font-weight','700'); ti.setAttribute('text-anchor','middle'); ti.textContent = label;
+    svg.appendChild(ti);
+  }
+  addRoot(2, 'x₁=2', '#c49a8a');
+  addRoot(3, 'x₂=3', '#c49a8a');
+  // symmetry axis
+  var ax = document.createElementNS('http://www.w3.org/2000/svg','line');
+  ax.setAttribute('x1',ns(c,2.5)); ax.setAttribute('y1','25'); ax.setAttribute('x2',ns(c,2.5)); ax.setAttribute('y2',ny(c,-0.5));
+  ax.setAttribute('stroke','#999'); ax.setAttribute('stroke-width','0.8'); ax.setAttribute('stroke-dasharray','5,3');
+  svg.appendChild(ax);
+  var axt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  axt.setAttribute('x',ns(c,2.6)); axt.setAttribute('y','35'); axt.setAttribute('font-size','10'); axt.setAttribute('fill','#999'); axt.textContent='x=2.5';
+  svg.appendChild(axt);
+  // vertex
+  var vx = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  vx.setAttribute('cx',ns(c,2.5)); vx.setAttribute('cy',ny(c,-0.25)); vx.setAttribute('r','3.5'); vx.setAttribute('fill','#a89880');
+  svg.appendChild(vx);
+  var vxt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  vxt.setAttribute('x',ns(c,2.6)); vxt.setAttribute('y',ny(c,-0.25)+4); vxt.setAttribute('font-size','11'); vxt.setAttribute('fill','#a89880'); vxt.setAttribute('font-weight','600'); vxt.textContent='顶点';
+  svg.appendChild(vxt);
+  // x-axis label for origin
+  var ot = document.createElementNS('http://www.w3.org/2000/svg','text');
+  ot.setAttribute('x',ns(c,0)-6); ot.setAttribute('y',ny(c,0)+14); ot.setAttribute('font-size','11'); ot.setAttribute('fill','#c49a8a'); ot.setAttribute('font-weight','600'); ot.textContent='O';
+  svg.appendChild(ot);
+})();
+
+// ── 6. Circle ──
+(function(){
+  var svg = document.getElementById('circle-svg');
+  if(!svg) return;
+  var cx=170, cy=155, r=105;
+  // radius at angle 0 (to the right)
+  var radEndX=cx+r, radEndY=cy;
+  var rad = document.createElementNS('http://www.w3.org/2000/svg','line');
+  rad.setAttribute('x1',cx); rad.setAttribute('y1',cy); rad.setAttribute('x2',radEndX); rad.setAttribute('y2',radEndY);
+  rad.setAttribute('stroke','#c49a8a'); rad.setAttribute('stroke-width','2');
+  svg.appendChild(rad);
+  var rt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  rt.setAttribute('x',radEndX+5); rt.setAttribute('y',radEndY-4); rt.setAttribute('font-size','13'); rt.setAttribute('fill','#c49a8a'); rt.setAttribute('font-weight','600'); rt.textContent='r';
+  svg.appendChild(rt);
+  // diameter
+  var diam = document.createElementNS('http://www.w3.org/2000/svg','line');
+  diam.setAttribute('x1',cx-r); diam.setAttribute('y1',cy); diam.setAttribute('x2',cx+r); diam.setAttribute('y2',cy);
+  diam.setAttribute('stroke','#a89880'); diam.setAttribute('stroke-width','1.5'); diam.setAttribute('stroke-dasharray','6,4');
+  svg.appendChild(diam);
+  var dt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  dt.setAttribute('x',cx-25); dt.setAttribute('y',cy-8); dt.setAttribute('font-size','11'); dt.setAttribute('fill','#a89880'); dt.textContent='d=2r';
+  svg.appendChild(dt);
+  // chord from angle 210° to 60° (nice slanted chord)
+  var a1=210*Math.PI/180, a2=60*Math.PI/180;
+  var ch1x=cx+r*Math.cos(a1), ch1y=cy+r*Math.sin(a1);
+  var ch2x=cx+r*Math.cos(a2), ch2y=cy+r*Math.sin(a2);
+  var chord = document.createElementNS('http://www.w3.org/2000/svg','line');
+  chord.setAttribute('x1',ch1x.toFixed(1)); chord.setAttribute('y1',ch1y.toFixed(1)); chord.setAttribute('x2',ch2x.toFixed(1)); chord.setAttribute('y2',ch2y.toFixed(1));
+  chord.setAttribute('stroke','#8a7a8a'); chord.setAttribute('stroke-width','1.8');
+  svg.appendChild(chord);
+  var cht = document.createElementNS('http://www.w3.org/2000/svg','text');
+  cht.setAttribute('x',ch1x-20); cht.setAttribute('y',ch1y+4); cht.setAttribute('font-size','12'); cht.setAttribute('fill','#8a7a8a'); cht.textContent='弦';
+  svg.appendChild(cht);
+  // tangent at angle 0 (rightmost point): vertical line
+  var tanLen=70;
+  var tan = document.createElementNS('http://www.w3.org/2000/svg','line');
+  tan.setAttribute('x1',cx+r); tan.setAttribute('y1',cy-tanLen); tan.setAttribute('x2',cx+r); tan.setAttribute('y2',cy+tanLen);
+  tan.setAttribute('stroke','#d4b896'); tan.setAttribute('stroke-width','1.5');
+  svg.appendChild(tan);
+  var tant = document.createElementNS('http://www.w3.org/2000/svg','text');
+  tant.setAttribute('x',cx+r+6); tant.setAttribute('y',cy-tanLen+6); tant.setAttribute('font-size','10'); tant.setAttribute('fill','#d4b896'); tant.textContent='切线⟂r';
+  svg.appendChild(tant);
+  // sector between angles -30° and 30°
+  var sa1=-30*Math.PI/180, sa2=30*Math.PI/180;
+  var sx1=cx+r*Math.cos(sa1), sy1=cy+r*Math.sin(sa1);
+  var sx2=cx+r*Math.cos(sa2), sy2=cy+r*Math.sin(sa2);
+  var sector = document.createElementNS('http://www.w3.org/2000/svg','path');
+  sector.setAttribute('d','M'+cx+','+cy+' L'+sx1.toFixed(1)+','+sy1.toFixed(1)+' A'+r+','+r+' 0 0,1 '+sx2.toFixed(1)+','+sy2.toFixed(1)+' Z');
+  sector.setAttribute('fill','#f5ede6'); sector.setAttribute('stroke','#c49a8a'); sector.setAttribute('stroke-width','1.2');
+  svg.appendChild(sector);
+  var sct = document.createElementNS('http://www.w3.org/2000/svg','text');
+  sct.setAttribute('x',cx+40); sct.setAttribute('y',cy-18); sct.setAttribute('font-size','11'); sct.setAttribute('fill','#c49a8a'); sct.textContent='扇形';
+  svg.appendChild(sct);
+  // center label
+  var cl = document.createElementNS('http://www.w3.org/2000/svg','text');
+  cl.setAttribute('x',cx+8); cl.setAttribute('y',cy-6); cl.setAttribute('font-size','12'); cl.setAttribute('fill','#3d322b'); cl.setAttribute('font-weight','600'); cl.textContent='O';
+  svg.appendChild(cl);
+  // inscribed angle annotation
+  var iat = document.createElementNS('http://www.w3.org/2000/svg','text');
+  iat.setAttribute('x',cx-105); iat.setAttribute('y',cy+90); iat.setAttribute('font-size','10'); iat.setAttribute('fill','#666'); iat.textContent='圆周角=½圆心角';
+  svg.appendChild(iat);
+})();
+
+// ── 7. Similar triangles ──
+(function(){
+  var svg = document.getElementById('similar-svg');
+  if(!svg) return;
+  // Smaller triangle
+  var p1 = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  p1.setAttribute('points','30,190 90,45 160,190'); p1.setAttribute('fill','#f5ede6'); p1.setAttribute('stroke','#c49a8a'); p1.setAttribute('stroke-width','2');
+  svg.appendChild(p1);
+  var sq = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  sq.setAttribute('x','30'); sq.setAttribute('y','168'); sq.setAttribute('width','20'); sq.setAttribute('height','20'); sq.setAttribute('fill','none'); sq.setAttribute('stroke','#c49a8a'); sq.setAttribute('stroke-width','0.8');
+  svg.appendChild(sq);
+  // Larger triangle
+  var p2 = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  p2.setAttribute('points','210,190 270,50 340,190'); p2.setAttribute('fill','#f0ebe4'); p2.setAttribute('stroke','#a89880'); p2.setAttribute('stroke-width','2.2');
+  svg.appendChild(p2);
+  var sq2 = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  sq2.setAttribute('x','210'); sq2.setAttribute('y','168'); sq2.setAttribute('width','20'); sq2.setAttribute('height','20'); sq2.setAttribute('fill','none'); sq2.setAttribute('stroke','#a89880'); sq2.setAttribute('stroke-width','0.8');
+  svg.appendChild(sq2);
+  // labels
+  var labels = [{x:80,y:100,t:'A',c:'#c49a8a'},{x:10,y:208,t:'B',c:'#c49a8a'},{x:165,y:208,t:'C',c:'#c49a8a'},
+                {x:268,y:105,t:"A'",c:'#a89880'},{x:192,y:208,t:"B'",c:'#a89880'},{x:345,y:208,t:"C'",c:'#a89880'}];
+  labels.forEach(function(l){
+    var t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',l.x); t.setAttribute('y',l.y); t.setAttribute('font-size','11'); t.setAttribute('fill',l.c); t.textContent=l.t;
+    svg.appendChild(t);
+  });
+})();
+
+// ── 8. Special triangles for trigonometry ──
+(function(){
+  var svg = document.getElementById('trig-svg');
+  if(!svg) return;
+  // 30-60-90: vertices at (30,180), (140,180), (30,30*tan30° → let's use geometry)
+  // 30-60-90: short leg=1 opposite 30°, long leg=√3 opposite 60°, hyp=2
+  // scale = 55
+  var s = 55;
+  // Triangle 1 (30-60-90): right angle at bottom-left
+  var t1_x=20, t1_y=190;
+  var t1 = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  t1.setAttribute('points',t1_x+','+t1_y+' '+(t1_x+Math.sqrt(3)*s)+','+t1_y+' '+t1_x+','+(t1_y-s));
+  t1.setAttribute('fill','#f5ede6'); t1.setAttribute('stroke','#c49a8a'); t1.setAttribute('stroke-width','2');
+  svg.appendChild(t1);
+  // right angle marker
+  var r1 = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  r1.setAttribute('x',t1_x); r1.setAttribute('y',t1_y-18); r1.setAttribute('width','18'); r1.setAttribute('height','18');
+  r1.setAttribute('fill','none'); r1.setAttribute('stroke','#c49a8a'); r1.setAttribute('stroke-width','1');
+  svg.appendChild(r1);
+  // labels
+  var l1 = [{x:t1_x-18,y:t1_y-30,t:'1',c:'#c49a8a'},{x:t1_x+Math.sqrt(3)*s/2-8,y:t1_y+16,t:'√3',c:'#c49a8a'},{x:t1_x+Math.sqrt(3)*s/2-16,y:t1_y-45,t:'2',c:'#c49a8a'}];
+  l1.forEach(function(l){var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',l.x);t.setAttribute('y',l.y);t.setAttribute('font-size','12');t.setAttribute('fill',l.c);t.textContent=l.t;svg.appendChild(t);});
+  var t30 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t30.setAttribute('x',t1_x+65); t30.setAttribute('y',t1_y-95); t30.setAttribute('font-size','12'); t30.setAttribute('fill','#3d322b'); t30.setAttribute('font-weight','700'); t30.setAttribute('text-anchor','middle'); t30.textContent='30°';
+  svg.appendChild(t30);
+  // sin/cos labels
+  [{x:t1_x+Math.sqrt(3)*s+12,y:t1_y-70,t:'sin30°=½',c:'#666'},{x:t1_x+Math.sqrt(3)*s+12,y:t1_y-55,t:'cos30°=√3/2',c:'#666'}].forEach(function(l){var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',l.x);t.setAttribute('y',l.y);t.setAttribute('font-size','10');t.setAttribute('fill',l.c);t.textContent=l.t;svg.appendChild(t);});
+
+  // Triangle 2 (45-45-90): isosceles right, scale 45
+  var t2_x=175, t2_y=190, s2=55;
+  var t2 = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  t2.setAttribute('points',t2_x+','+t2_y+' '+(t2_x+s2)+','+t2_y+' '+t2_x+','+(t2_y-s2));
+  t2.setAttribute('fill','#f0ebe4'); t2.setAttribute('stroke','#a89880'); t2.setAttribute('stroke-width','2');
+  svg.appendChild(t2);
+  var r2 = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  r2.setAttribute('x',t2_x); r2.setAttribute('y',t2_y-18); r2.setAttribute('width','18'); r2.setAttribute('height','18');
+  r2.setAttribute('fill','none'); r2.setAttribute('stroke','#a89880'); r2.setAttribute('stroke-width','1');
+  svg.appendChild(r2);
+  var l2 = [{x:t2_x-14,y:t2_y-30,t:'1',c:'#a89880'},{x:t2_x+s2/2-6,y:t2_y+16,t:'1',c:'#a89880'},{x:t2_x+15,y:t2_y-35,t:'√2',c:'#a89880'}];
+  l2.forEach(function(l){var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',l.x);t.setAttribute('y',l.y);t.setAttribute('font-size','12');t.setAttribute('fill',l.c);t.textContent=l.t;svg.appendChild(t);});
+  var t45 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t45.setAttribute('x',t2_x+30); t45.setAttribute('y',t2_y-62); t45.setAttribute('font-size','12'); t45.setAttribute('fill','#3d322b'); t45.setAttribute('font-weight','700'); t45.setAttribute('text-anchor','middle'); t45.textContent='45°';
+  svg.appendChild(t45);
+  var l45 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  l45.setAttribute('x',t2_x+s2+10); l45.setAttribute('y',t2_y-60); l45.setAttribute('font-size','10'); l45.setAttribute('fill','#666'); l45.textContent='sin45°=cos45°=√2/2';
+  svg.appendChild(l45);
+
+  // Triangle 3 (60°): right angle at bottom-left, 60° at top
+  var t3_x=300, t3_y=190, s3=38;
+  var t3 = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  t3.setAttribute('points',t3_x+','+t3_y+' '+(t3_x+s3)+','+t3_y+' '+t3_x+','+(t3_y-Math.sqrt(3)*s3));
+  t3.setAttribute('fill','#fef5ec'); t3.setAttribute('stroke','#d4b896'); t3.setAttribute('stroke-width','2');
+  svg.appendChild(t3);
+  var r3 = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  r3.setAttribute('x',t3_x); r3.setAttribute('y',t3_y-15); r3.setAttribute('width','15'); r3.setAttribute('height','15');
+  r3.setAttribute('fill','none'); r3.setAttribute('stroke','#d4b896'); r3.setAttribute('stroke-width','1');
+  svg.appendChild(r3);
+  var l3 = [{x:t3_x-14,y:t3_y-50,t:'√3',c:'#d4b896'},{x:t3_x+s3/2-5,y:t3_y+16,t:'1',c:'#d4b896'},{x:t3_x+s3/2+10,y:t3_y-65,t:'2',c:'#d4b896'}];
+  l3.forEach(function(l){var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',l.x);t.setAttribute('y',l.y);t.setAttribute('font-size','12');t.setAttribute('fill',l.c);t.textContent=l.t;svg.appendChild(t);});
+  var t60 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t60.setAttribute('x',t3_x+18); t60.setAttribute('y',t3_y-Math.sqrt(3)*s3+8); t60.setAttribute('font-size','12'); t60.setAttribute('fill','#3d322b'); t60.setAttribute('font-weight','700'); t60.setAttribute('text-anchor','middle'); t60.textContent='60°';
+  svg.appendChild(t60);
+  [{x:t3_x+44,y:t3_y-72,t:'sin60°=√3/2',c:'#666'},{x:t3_x+44,y:t3_y-57,t:'cos60°=½',c:'#666'}].forEach(function(l){var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',l.x);t.setAttribute('y',l.y);t.setAttribute('font-size','10');t.setAttribute('fill',l.c);t.textContent=l.t;svg.appendChild(t);});
+})();
+
+// ── UI ──
+var backTop = document.getElementById('backTop');
+window.addEventListener('scroll', function(){ backTop.classList.toggle('show', window.scrollY > 400); });
+var sections = document.querySelectorAll('section[id]'), navLinks = document.querySelectorAll('.topbar a');
+window.addEventListener('scroll', function(){
+  var cur = '';
+  sections.forEach(function(s){ if(window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+});
+})();
+</script>
+</body>
+</html>

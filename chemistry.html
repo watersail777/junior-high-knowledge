@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中化学 · 基础知识清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f5f2; --card: #f8faf7; --ink: #3d423d;
+  --accent: #8a9f8c; --accent-light: #edf2ed; --accent-dark: #5a7a5c;
+  --border: #d5dbd4; --border-light: #e4e9e3; --muted: #8b9089;
+  --tag-bg: #edf0eb; --radius: 10px;
+  --font-heading: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-math: "Cambria Math", "Latin Modern Math", "Times New Roman", serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.85;font-size:15px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 25% 30%, rgba(138,159,140,0.08) 0%, transparent 50%),radial-gradient(ellipse at 75% 70%, rgba(138,159,140,0.05) 0%, transparent 50%)}
+
+.topbar{position:sticky;top:0;z-index:100;background:rgba(242,245,242,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;gap:4px;padding:0 16px;flex-wrap:wrap}
+.topbar a{display:block;padding:10px 16px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:.15s;font-family:var(--font-heading)}
+.topbar a:hover,.topbar a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.topbar .back{color:var(--accent);font-weight:600}
+
+.hero{position:relative;z-index:1;text-align:center;padding:48px 20px 36px;background:linear-gradient(180deg, #f6f8f5 0%, #f2f5f2 100%);border-bottom:1px solid var(--border-light)}
+.hero::after{content:'';display:block;margin:24px auto 0;width:50px;height:2px;background:var(--accent);opacity:0.5}
+.hero h1{font-family:var(--font-heading);font-size:32px;font-weight:700;letter-spacing:3px}
+.hero .sub{margin-top:8px;font-size:14px;color:var(--muted);font-family:var(--font-heading)}
+.container{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:32px 24px 80px}
+
+.grade-section{margin-bottom:52px}
+.grade-head{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.grade-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0;font-family:var(--font-heading);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.grade-head h2{font-family:var(--font-heading);font-size:22px;font-weight:700}
+.grade-head .subtitle{font-size:13px;color:var(--muted);margin-left:4px}
+
+.chapter{background:var(--card);border-radius:var(--radius);border:1px solid var(--border-light);margin-bottom:14px;box-shadow:0 1px 4px rgba(61,66,61,0.04);transition:box-shadow .2s;overflow:hidden}
+.chapter:hover{box-shadow:0 3px 14px rgba(61,66,61,0.08)}
+.chapter.open{border-left:3px solid var(--accent)}
+.chapter-head{padding:14px 20px;cursor:pointer;font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px;user-select:none;font-family:var(--font-heading)}
+.chapter-head .num{color:var(--accent);font-size:13px;font-weight:400;min-width:22px}
+.chapter-head .tag{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--tag-bg);color:var(--muted);white-space:nowrap;font-family:var(--font-body);font-weight:400}
+.chapter-head .arrow{margin-left:auto;transition:.25s;color:var(--muted);font-size:11px}
+.chapter.open .chapter-head .arrow{transform:rotate(180deg);color:var(--accent)}
+.chapter-body{display:none;padding:4px 24px 20px}
+.chapter.open .chapter-body{display:block}
+.chapter-body ul{padding-left:20px}.chapter-body li{margin:5px 0}
+.chapter-body li strong{color:var(--accent-dark)}
+
+.fml{display:inline-block;background:#f0f3ef;padding:1px 7px;border-radius:3px;font-family:var(--font-math);font-style:italic;color:#4a6a4c;font-size:14px}
+
+.callout{padding:13px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:14px;line-height:1.75}
+.callout.important{background:var(--accent-light);border-left:4px solid var(--accent)}
+.callout.important::before{content:"★ 核心  ";color:var(--accent);font-weight:700;font-size:12px}
+.callout.tip{background:#f4f7f3;border-left:3px solid #7a9a7c}
+.callout.tip::before{content:" 提示  ";color:#7a9a7c;font-weight:700;font-size:12px}
+.callout.pitfall{background:#fef9f5;border-left:3px solid #c4947a}
+.callout.pitfall::before{content:"⚠ 易错  ";color:#c4947a;font-weight:700;font-size:12px}
+
+.eq-card{display:inline-block;background:#f6f9f5;border:1px solid var(--border-light);border-radius:6px;padding:8px 14px;margin:4px;font-family:var(--font-math);font-size:14px;font-style:italic}
+
+.diagram{text-align:center;margin:20px 0;padding:14px 8px;background:#fafcfa;border:1px dashed var(--border-light);border-radius:6px}
+.diagram svg{max-width:100%;height:auto}
+.diagram-caption{font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--font-heading)}
+
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+.tbl th{background:#f0f3ef;padding:8px 12px;text-align:center;font-weight:600;font-family:var(--font-heading)}
+.tbl td{padding:7px 12px;text-align:center;border-top:1px solid var(--border-light)}
+.tbl tr:nth-child(even) td{background:#fafcfa}
+
+.pitfall-list{counter-reset:pf}.pitfall-list li{counter-increment:pf;margin:8px 0;padding-left:8px}
+.pitfall-list li::marker{content:"#"counter(pf) "  ";color:var(--accent);font-weight:700}
+
+.back-top{position:fixed;bottom:28px;right:28px;z-index:200;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:0 2px 10px rgba(138,159,140,0.3);opacity:0;transition:.3s;pointer-events:none}
+.back-top.show{opacity:1;pointer-events:auto}
+
+.footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border-light);font-family:var(--font-heading)}
+.footer a{color:var(--accent);text-decoration:none}
+
+@media(max-width:640px){.hero h1{font-size:24px}.container{padding:20px 12px 60px}.topbar a{padding:8px 10px;font-size:11px}.chapter-head{padding:12px 14px;font-size:14px}.chapter-body{padding:4px 14px 16px}}
+@media print{.topbar,.back-top{display:none}.chapter{break-inside:avoid;box-shadow:none;border:1px solid #ddd}.chapter-body{display:block!important}body{font-size:13px;background:#fff}}
+</style>
+</head>
+<body>
+
+<nav class="topbar"><a href="index.html" class="back">← 首页</a><a href="#g9a">九上</a><a href="#g9b">九下</a><a href="#equations">方程式</a><a href="#pitfalls">易错 Top 10</a></nav>
+
+<header class="hero"><h1>初中化学 · 基础知识清单</h1><p class="sub">九年级上·下两册 · 人教版 · 方程式 + 易错点</p></header>
+
+<div class="container">
+
+<!-- ====== 九上 ====== -->
+<section class="grade-section" id="g9a">
+<div class="grade-head"><div class="grade-badge" style="background:#8a9f8c;">上</div><h2>九年级上册</h2></div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">一</span>走进化学世界 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul>
+      <li><strong>物理变化 vs 化学变化</strong>：是否有新物质生成。化学变化常伴随发光、放热、颜色变化、产生气体或沉淀，但<span style="color:#c4947a;">不能以现象为判断依据</span>。</li>
+      <li><strong>物理性质</strong>：颜色、状态、气味、熔点、沸点、硬度、密度、溶解性、导电性等（不需化学变化就表现）。</li>
+      <li><strong>化学性质</strong>：可燃性、助燃性、氧化性、还原性、酸碱性、稳定性等（在化学变化中表现）。</li>
+      <li><strong>基本操作</strong>：药品取用"三不"原则（不触、不闻、不尝）。酒精灯用外焰加热，熄灭用灯帽盖灭（不可吹灭）。</li>
+    </ul>
+    <div class="callout pitfall">发光放热不一定是化学变化！如灯泡发光是物理变化。判断唯一标准：是否有新物质生成。</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">二</span>我们周围的空气 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>空气成分</strong>：N₂ 78%、O₂ 21%、稀有气体 0.94%、CO₂ 0.03%。测定氧气含量的实验（红磷燃烧）原理：消耗 O₂ 使瓶内气压减小。</li>
+    <li><strong>O₂ 性质</strong>：无色无味、密度略大于空气、不易溶于水。支持燃烧（助燃性），化学性质活泼。检验：带火星木条复燃。</li></ul>
+    <div class="callout important">实验室制 O₂ 三法：<br><span class="eq-card">2KMnO₄ → K₂MnO₄ + MnO₂ + O₂↑</span>（固固加热，试管口塞棉花）<br><span class="eq-card">2H₂O₂ →<sup>MnO₂</sup> 2H₂O + O₂↑</span>（固液不加热，MnO₂ 是催化剂）</div>
+    <ul><li><strong>催化剂</strong>：改变反应速率，本身的质量和化学性质在反应前后不变（"一变两不变"）。</li></ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">三</span>物质构成的奥秘 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">原子结构：质子数 = 核外电子数 = 核电荷数 = 原子序数<br>相对原子质量 ≈ 质子数 + 中子数</div>
+    <ul><li><strong>元素</strong>：质子数（核电荷数）相同的一类原子的总称。地壳中含量前四：O > Si > Al > Fe。</li>
+    <li><strong>化合价口诀</strong>：一价钾钠氯氢银，二价氧钙钡镁锌；三铝四硅五价磷，二三铁二四碳；铜汞二价最常见。</li>
+    <li><strong>化学式书写</strong>：正价在前负价在后，交叉约简。</li></ul>
+    <div class="callout pitfall">元素是宏观概念，只讲种类不讲个数。不能说"两个氧元素"，只能说"氧元素"或"两个氧原子"。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">四</span>自然界的水 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>电解水</strong>：正极产生 O₂，负极产生 H₂，体积比 1:2。结论：水由氢元素和氧元素组成。</li>
+    <li><strong>水的净化</strong>：沉淀 → 过滤 → 吸附（活性炭）→ 消毒。其中过滤除去不溶性杂质，吸附除去色素和异味。</li>
+    <li><strong>硬水 vs 软水</strong>：含较多可溶性钙镁化合物的水是硬水。用肥皂水鉴别（浮渣多为硬水），煮沸可软化硬水。</li></ul>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">五</span>化学方程式 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">质量守恒定律：参加化学反应的各物质的质量总和 = 反应后生成的各物质的质量总和。微观解释——化学反应前后原子种类、数目、质量不变。</div>
+    <ul><li><strong>化学方程式书写</strong>：① 写（反应物和生成物的化学式）② 配（配平，使两边各原子个数相等）③ 标（注明反应条件和 ↑↓）。</li></ul>
+    <div class="callout pitfall">配平只用最小公倍数法或奇偶数法，不能改变化学式中的角标数字！配平是改系数，不是改化学式。</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">六</span>碳和碳的氧化物 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>碳单质</strong>：金刚石（最硬）、石墨（导电、滑腻）、C₆₀。同种元素可组成不同单质（同素异形体）。</li>
+    <li><strong>CO</strong>：无色无味、有毒（与血红蛋白结合）、可燃（2CO+O₂→2CO₂）、还原性（炼铁）。</li>
+    <li><strong>CO₂</strong>：无色无味、密度大于空气、不支持燃烧（灭火）。检验：通入澄清石灰水变浑浊（CO₂+Ca(OH)₂→CaCO₃↓+H₂O）。</li></ul>
+    <div class="callout important">实验室制 CO₂：<span class="eq-card">CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑</span>（不能用稀硫酸，生成微溶 CaSO₄ 包裹石灰石阻止反应）。</div>
+    <div class="callout pitfall">CO₂ 不能支持燃烧 ≠ CO₂ 不能燃烧。CO₂ 本身不燃烧也不支持燃烧，但不是所有物质都不能在 CO₂ 中燃烧（如镁条可以在 CO₂ 中燃烧：2Mg+CO₂→2MgO+C）。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">七</span>燃料及其利用 <span class="tag">九上</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">燃烧三条件（缺一不可）：① 可燃物 ② 与 O₂ 接触 ③ 温度达到着火点。<br>灭火原理（破坏任一条件）：① 清除可燃物 ② 隔绝 O₂ ③ 降温至着火点以下。</div>
+    <ul><li><strong>三大化石燃料</strong>：煤、石油、天然气（CH₄，燃烧：CH₄+2O₂→CO₂+2H₂O）。都是不可再生能源。</li></ul>
+  </div>
+</div>
+</section>
+
+<!-- ====== 九下 ====== -->
+<section class="grade-section" id="g9b">
+<div class="grade-head"><div class="grade-badge" style="background:#6a8a6c;">下</div><h2>九年级下册</h2></div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">八</span>金属和金属材料 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">金属活动性顺序（由强到弱）：<br>K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au<br>规律：① 排在 H 前的金属能置换出酸中的氢 ② 排在前面的金属能把后面的金属从盐溶液中置换出来（K、Ca、Na 除外，它们先与水反应）。</div>
+    <ul><li><strong>合金</strong>：金属与金属（或非金属）熔合而成，具有金属特性。合金硬度一般大于纯金属，熔点一般低于纯金属。常见合金：生铁、钢、黄铜、铝合金。</li>
+    <li><strong>炼铁</strong>：<span class="eq-card">Fe₂O₃ + 3CO →<sup>高温</sup> 2Fe + 3CO₂</span>（还原反应，CO 是还原剂）。</li>
+    <li><strong>铁锈</strong>：主要成分 Fe₂O₃·xH₂O。防锈措施：保持干燥、涂油、刷漆、镀金属、制成不锈钢。</li></ul>
+    <div class="callout pitfall">铁与酸/盐溶液发生置换反应生成的是 +2 价亚铁盐（Fe²⁺，溶液浅绿色），不是 +3 价铁盐！如 Fe + 2HCl → FeCl₂ + H₂↑（不是 FeCl₃）。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">九</span>溶液 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>溶液</strong>：均一、稳定的混合物。溶质+溶剂→溶液。水是最常见的溶剂。</li>
+    <li><strong>溶解度</strong>：一定温度下，100g 溶剂中最多溶解的溶质质量（g）。大多数固体溶解度随温度升高而增大（KNO₃），少数变化不大（NaCl），极少数随温度升高而减小（Ca(OH)₂）。</li></ul>
+    <div class="callout important">溶质质量分数：<span class="fml">ω = m溶质 / m溶液 × 100%</span>（m溶液 = m溶质 + m溶剂）<br>稀释公式：浓溶液质量 × 浓浓度 = 稀溶液质量 × 稀浓度</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十</span>酸和碱 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>常见酸</strong>：HCl（盐酸）、H₂SO₄（硫酸）。酸的通性：与指示剂（石蕊变红）、与活泼金属（生成 H₂）、与金属氧化物、与碱（中和）、与某些盐。</li>
+    <li><strong>常见碱</strong>：NaOH（烧碱/火碱/苛性钠，易潮解）、Ca(OH)₂（熟石灰/消石灰）。碱的通性：与指示剂（石蕊变蓝、酚酞变红）、与非金属氧化物、与酸（中和）、与某些盐。</li></ul>
+    <div class="callout important">中和反应：酸 + 碱 → 盐 + 水（<span class="eq-card">HCl + NaOH → NaCl + H₂O</span>）。实质：H⁺ + OH⁻ → H₂O。<br>pH：pH &lt; 7 酸性，pH = 7 中性，pH > 7 碱性。pH 试纸测的是整数。</div>
+  </div>
+</div>
+
+<div class="chapter open">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十一</span>盐 化肥 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <div class="callout important">复分解反应条件：生成物中有↓（沉淀）、↑（气体）或 H₂O。至少满足一个才能发生。<br>常见沉淀：CaCO₃↓（白）、BaSO₄↓（白，不溶于酸）、AgCl↓（白，不溶于酸）、Cu(OH)₂↓（蓝）、Fe(OH)₃↓（红褐）。</div>
+    <ul><li><strong>化肥</strong>：氮肥（促叶）、磷肥（促根/果实）、钾肥（促茎秆，抗倒伏）。复合肥：KNO₃、NH₄H₂PO₄。</li></ul>
+    <div class="callout pitfall">复分解反应不一定都能发生！必须满足"生成↓/↑/H₂O"之一。如 NaCl + KNO₃ → 不发生反应（没有↓/↑/H₂O生成）。</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十二</span>化学与生活 <span class="tag">九下</span><span class="arrow">▼</span></div>
+  <div class="chapter-body">
+    <ul><li><strong>六大营养素</strong>：蛋白质、糖类、油脂、维生素、无机盐、水。其中供能的是蛋白质、糖类、油脂。</li>
+    <li><strong>有机合成材料</strong>：塑料、合成纤维、合成橡胶。天然有机材料：棉花、羊毛、天然橡胶、蚕丝。</li>
+  </ul></div>
+</div>
+</section>
+
+<!-- ====== 方程式汇总 ====== -->
+<section id="equations">
+<div class="grade-head"><div class="grade-badge" style="background:#8a9f8c;">式</div><h2>核心化学方程式</h2><span class="subtitle">★ 必背 20 个</span></div>
+
+<div class="chapter open"><div class="chapter-head" onclick="this.parentElement.classList.toggle('open')">制取气体（4个）<span class="arrow">▼</span></div><div class="chapter-body">
+<div class="eq-card">2KMnO₄ →<sup>Δ</sup> K₂MnO₄ + MnO₂ + O₂↑</div>
+<div class="eq-card">2H₂O₂ →<sup>MnO₂</sup> 2H₂O + O₂↑</div>
+<div class="eq-card">CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑</div>
+<div class="eq-card">2H₂O →<sup>通电</sup> 2H₂↑ + O₂↑</div>
+</div></div>
+
+<div class="chapter open"><div class="chapter-head" onclick="this.parentElement.classList.toggle('open')">燃烧反应（4个）<span class="arrow">▼</span></div><div class="chapter-body">
+<div class="eq-card">C + O₂ →<sup>点燃</sup> CO₂</div>
+<div class="eq-card">2CO + O₂ →<sup>点燃</sup> 2CO₂</div>
+<div class="eq-card">CH₄ + 2O₂ →<sup>点燃</sup> CO₂ + 2H₂O</div>
+<div class="eq-card">4P + 5O₂ →<sup>点燃</sup> 2P₂O₅</div>
+</div></div>
+
+<div class="chapter open"><div class="chapter-head" onclick="this.parentElement.classList.toggle('open')">金属相关（5个）<span class="arrow">▼</span></div><div class="chapter-body">
+<div class="eq-card">Zn + H₂SO₄ → ZnSO₄ + H₂↑</div>
+<div class="eq-card">Fe + 2HCl → FeCl₂ + H₂↑</div>
+<div class="eq-card">Fe + CuSO₄ → FeSO₄ + Cu</div>
+<div class="eq-card">Fe₂O₃ + 3CO →<sup>高温</sup> 2Fe + 3CO₂</div>
+<div class="eq-card">2Al + Fe₂O₃ →<sup>高温</sup> Al₂O₃ + 2Fe（铝热反应）</div>
+</div></div>
+
+<div class="chapter open"><div class="chapter-head" onclick="this.parentElement.classList.toggle('open')">酸碱盐（7个）<span class="arrow">▼</span></div><div class="chapter-body">
+<div class="eq-card">HCl + NaOH → NaCl + H₂O</div>
+<div class="eq-card">Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂↑</div>
+<div class="eq-card">CO₂ + Ca(OH)₂ → CaCO₃↓ + H₂O</div>
+<div class="eq-card">CaO + H₂O → Ca(OH)₂</div>
+<div class="eq-card">CaCO₃ →<sup>高温</sup> CaO + CO₂↑</div>
+<div class="eq-card">CuSO₄ + 2NaOH → Cu(OH)₂↓ + Na₂SO₄</div>
+<div class="eq-card">AgNO₃ + NaCl → AgCl↓ + NaNO₃</div>
+</div></div>
+</section>
+
+<!-- ====== 易错 Top 10 ====== -->
+<section id="pitfalls">
+<div class="grade-head"><div class="grade-badge" style="background:#c4947a;">!</div><h2>化学易错点 Top 10</h2></div>
+<div class="chapter open"><div class="chapter-body">
+<ol class="pitfall-list">
+<li><strong>物理变化 vs 化学变化</strong>——唯一判断标准是有无新物质生成，发光/放热/变色只是辅助现象，不能作为判断依据。</li>
+<li><strong>催化剂不参与反应？</strong>——催化剂参与反应，只是在反应后质量和化学性质不变。"一变两不变"：改变反应速率，质量和化学性质不变。</li>
+<li><strong>铁与酸/盐的置换</strong>——生成的是 +2 价亚铁盐（Fe²⁺，溶液浅绿色），不是 +3 价铁盐。FeCl₂ vs FeCl₃ 经常考。</li>
+<li><strong>元素是宏观概念</strong>——只讲种类不讲个数。"两个氧元素"是错误说法，应说"氧元素"或"两个氧原子"。</li>
+<li><strong>配平是改系数不改变化学式</strong>——绝对不能改动化学式中右下角的角标数字来配平！配平只能改前面的系数。</li>
+<li><strong>CO₂ 不支持燃烧 ≠ 所有物质都不能在其中燃烧</strong>——如镁条可在 CO₂ 中燃烧：2Mg + CO₂ → 2MgO + C。</li>
+<li><strong>复分解反应不一定发生</strong>——必须满足"生成沉淀/气体/水"之一。如 NaCl + KNO₃ 不发生反应。</li>
+<li><strong>溶解度与溶质质量分数</strong>——溶解度是 100g 溶剂中的最大溶质质量（温度相关），溶质质量分数是溶质占溶液的比例。</li>
+<li><strong>中和反应 = 酸 + 碱 → 盐 + 水</strong>——但生成盐和水的反应不一定是中和反应！如 CO₂ + Ca(OH)₂ → CaCO₃↓ + H₂O 不是中和反应（CO₂ 不是酸）。</li>
+<li><strong>浓硫酸稀释</strong>——<span style="color:#c4947a;">酸入水，沿壁倒，不断搅拌！</span>绝对不能把水倒入浓硫酸中（会暴沸飞溅）。</li>
+</ol></div></div>
+</section>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer class="footer"><a href="index.html">← 返回首页</a>&emsp;初中化学基础知识清单 · 人教版 · 中考复习用</footer>
+
+<script>
+(function(){
+var bt=document.getElementById('backTop');
+window.addEventListener('scroll',function(){bt.classList.toggle('show',window.scrollY>400);});
+var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.topbar a[href^="#"]');
+window.addEventListener('scroll',function(){var cur='';secs.forEach(function(s){if(window.scrollY>=s.offsetTop-120)cur=s.id;});links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});});
+})();
+</script>
+</body>
+</html>

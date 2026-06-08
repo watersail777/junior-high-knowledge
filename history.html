@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中历史 · 基础知识清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f5f2ed; --card: #faf8f4; --ink: #4a3f35;
+  --accent: #b89880; --accent-light: #f5f0ea; --accent-dark: #8a6d58;
+  --border: #d8cfc0; --border-light: #e8e0d5; --muted: #9b8e80;
+  --tag-bg: #f0e9df; --radius: 10px;
+  --font-heading: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.85;font-size:15px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 20% 25%, rgba(184,152,128,0.08) 0%, transparent 50%),radial-gradient(ellipse at 80% 75%, rgba(184,152,128,0.06) 0%, transparent 50%),url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E")}
+
+.topbar{position:sticky;top:0;z-index:100;background:rgba(245,242,237,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;gap:4px;padding:0 16px;flex-wrap:wrap}
+.topbar a{display:block;padding:10px 16px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:.15s;font-family:var(--font-heading)}
+.topbar a:hover,.topbar a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.topbar .back{color:var(--accent);font-weight:600}
+
+.hero{position:relative;z-index:1;text-align:center;padding:52px 20px 40px;background:linear-gradient(180deg, #f8f5f0 0%, #f5f2ed 100%);border-bottom:1px solid var(--border-light)}
+.hero::after{content:'';display:block;margin:24px auto 0;width:50px;height:2px;background:var(--accent);opacity:0.5}
+.hero h1{font-family:var(--font-heading);font-size:32px;font-weight:700;letter-spacing:3px}
+.hero .sub{margin-top:8px;font-size:14px;color:var(--muted);font-family:var(--font-heading)}
+.container{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:32px 24px 80px}
+
+.grade-section{margin-bottom:52px}
+.grade-head{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.grade-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0;font-family:var(--font-heading);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.grade-head h2{font-family:var(--font-heading);font-size:22px;font-weight:700}
+.grade-head .subtitle{font-size:13px;color:var(--muted);margin-left:4px}
+
+.period{background:var(--card);border-radius:var(--radius);border:1px solid var(--border-light);margin-bottom:18px;box-shadow:0 1px 4px rgba(74,63,53,0.04);overflow:hidden}
+.period.open{border-left:3px solid var(--accent)}
+.period-head{padding:14px 20px;cursor:pointer;font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px;user-select:none;font-family:var(--font-heading)}
+.period-head .num{color:var(--accent);font-size:13px;font-weight:400;min-width:22px}
+.period-head .years{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--tag-bg);color:var(--muted);white-space:nowrap;font-family:var(--font-body);font-weight:400}
+.period-head .arrow{margin-left:auto;transition:.25s;color:var(--muted);font-size:11px}
+.period.open .period-head .arrow{transform:rotate(180deg);color:var(--accent)}
+.period-body{display:none;padding:4px 24px 20px}
+.period.open .period-body{display:block}
+
+.overview{font-size:14px;color:var(--muted);margin-bottom:14px;line-height:1.8;padding:10px 14px;background:#faf8f3;border-radius:6px}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.tbl th{background:#f5f0ea;padding:8px 10px;text-align:left;font-weight:600;font-family:var(--font-heading);font-size:13px}
+.tbl td{padding:7px 10px;border-top:1px solid var(--border-light);vertical-align:top}
+.tbl tr:nth-child(even) td{background:#fdfcf9}
+.tbl .year{white-space:nowrap;color:var(--accent-dark);font-weight:600;width:80px}
+.tbl .event{font-weight:500}
+.tbl .significance{color:var(--muted);font-size:12px}
+
+.timeline-bar{display:flex;align-items:center;gap:0;margin:12px 0;overflow-x:auto;padding:8px 0}
+.timeline-dot{flex-shrink:0;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.timeline-line{flex:1;min-width:16px;height:2px;background:var(--accent);opacity:0.4}
+.timeline-item{flex-shrink:0;text-align:center;font-size:11px;line-height:1.4}
+.timeline-item .yr{color:var(--accent-dark);font-weight:700}
+.timeline-item .ev{color:var(--ink)}
+
+.callout{padding:13px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:14px;line-height:1.75}
+.callout.important{background:var(--accent-light);border-left:4px solid var(--accent)}
+.callout.important::before{content:"★ 关键  ";color:var(--accent);font-weight:700;font-size:12px}
+.callout.pitfall{background:#fef9f5;border-left:3px solid #c4947a}
+.callout.pitfall::before{content:"⚠ 易错  ";color:#c4947a;font-weight:700;font-size:12px}
+
+.pitfall-list{counter-reset:pf}.pitfall-list li{counter-increment:pf;margin:8px 0;padding-left:8px}
+.pitfall-list li::marker{content:"#"counter(pf) "  ";color:var(--accent);font-weight:700}
+
+.back-top{position:fixed;bottom:28px;right:28px;z-index:200;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:0 2px 10px rgba(184,152,128,0.3);opacity:0;transition:.3s;pointer-events:none}
+.back-top.show{opacity:1;pointer-events:auto}
+
+.footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border-light);font-family:var(--font-heading)}
+.footer a{color:var(--accent);text-decoration:none}
+
+@media(max-width:640px){.hero h1{font-size:24px}.container{padding:20px 12px 60px}.topbar a{padding:8px 10px;font-size:11px}.period-head{padding:12px 14px;font-size:14px}.period-body{padding:4px 14px 16px}.tbl{font-size:12px}.tbl .year{width:55px}}
+@media print{.topbar,.back-top{display:none}.period{break-inside:avoid;box-shadow:none;border:1px solid #ddd}.period-body{display:block!important}body{font-size:13px;background:#fff}}
+</style>
+</head>
+<body>
+
+<nav class="topbar"><a href="index.html" class="back">← 首页</a><a href="#g7">七上·下</a><a href="#g8">八上·下</a><a href="#g9">九上·下</a><a href="#pitfalls">易错 Top 10</a></nav>
+
+<header class="hero"><h1>初中历史 · 基础知识清单</h1><p class="sub">中国古代史 → 近代史 → 现代史 → 世界史 · 人教版六册</p></header>
+
+<div class="container">
+
+<!-- ====== 七年级 ====== -->
+<section class="grade-section" id="g7">
+<div class="grade-head"><div class="grade-badge" style="background:#b89880;">七</div><h2>七年级 · 中国古代史</h2></div>
+
+<div class="period open">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">一</span>早期文明与夏商周 <span class="years">远古~前771年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">中国境内早期人类（元谋人、北京人、山顶洞人）→ 原始农耕（河姆渡/半坡）→ 黄帝炎帝传说 → 夏朝建立（第一个王朝）→ 商朝（甲骨文、青铜器）→ 西周（分封制、宗法制）。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">约170万年前</td><td class="event">元谋人</td><td class="significance">我国境内目前已确认的最早古人类</td></tr>
+      <tr><td class="year">约70-20万年前</td><td class="event">北京人</td><td class="significance">使用打制石器、天然火，群居生活</td></tr>
+      <tr><td class="year">约7000年前</td><td class="event">河姆渡遗址</td><td class="significance">长江流域，种植水稻，住干栏式建筑</td></tr>
+      <tr><td class="year">约6000年前</td><td class="event">半坡遗址</td><td class="significance">黄河流域，种植粟，住半地穴式房屋</td></tr>
+      <tr><td class="year">约前2070年</td><td class="event">夏朝建立（禹）</td><td class="significance">中国历史上第一个王朝，"公天下"→"家天下"</td></tr>
+      <tr><td class="year">约前1600年</td><td class="event">商朝（汤）</td><td class="significance">甲骨文（最早文字）、青铜器（司母戊鼎）</td></tr>
+      <tr><td class="year">前1046年</td><td class="event">西周建立</td><td class="significance">分封制、宗法制，井田制</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="period open">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">二</span>春秋战国 · 秦汉 <span class="years">前770~220年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">春秋争霸（齐桓公"尊王攘夷"）→ 战国七雄 → 商鞅变法 → 百家争鸣（儒道墨法）→ 秦统一六国（前221年，中国第一个统一的多民族封建国家）→ 汉（文景之治→汉武帝大一统→丝绸之路）。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">前356年</td><td class="event">商鞅变法</td><td class="significance">使秦国成为最强盛的诸侯国，为统一奠基</td></tr>
+      <tr><td class="year">前221年</td><td class="event">秦统一六国</td><td class="significance">第一个统一的多民族中央集权封建国家，推行郡县制</td></tr>
+      <tr><td class="year">前209年</td><td class="event">陈胜吴广起义</td><td class="significance">中国历史上第一次大规模农民起义</td></tr>
+      <tr><td class="year">前202年</td><td class="event">西汉建立</td><td class="significance">刘邦（汉高祖），休养生息政策</td></tr>
+      <tr><td class="year">前138年</td><td class="event">张骞出使西域</td><td class="significance">开辟丝绸之路，促进东西方交流</td></tr>
+    </table>
+    <div class="callout important">百家争鸣核心：儒家（孔子"仁""礼"、孟子"仁政"）· 道家（老子"无为而治"、庄子）· 法家（韩非"法治"）· 墨家（墨子"兼爱""非攻"）</div>
+  </div>
+</div>
+
+<div class="period">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">三</span>三国两晋南北朝 <span class="years">220~589年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">东汉末年分三国（魏蜀吴）→ 西晋短暂统一 → 五胡乱华 → 东晋偏安（淝水之战）→ 南北朝对峙 → 北魏孝文帝改革（汉化）→ 民族大融合。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">208年</td><td class="event">赤壁之战</td><td class="significance">奠定三国鼎立局面</td></tr>
+      <tr><td class="year">383年</td><td class="event">淝水之战</td><td class="significance">以少胜多，东晋保住了南方</td></tr>
+      <tr><td class="year">5世纪末</td><td class="event">孝文帝改革</td><td class="significance">迁都洛阳、说汉语、穿汉服、改汉姓，促进民族大融合</td></tr>
+    </table>
+    <div class="callout important">经济重心开始南移（北方战乱，人口南迁带来劳动力和技术）。</div>
+  </div>
+</div>
+
+<div class="period open">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">四</span>隋唐 <span class="years">581~907年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">隋统一 → 大运河 → 科举制创立 → 唐（贞观之治→开元盛世→安史之乱由盛转衰）。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">605年</td><td class="event">隋朝大运河</td><td class="significance">南北交通大动脉，促进经济文化交流</td></tr>
+      <tr><td class="year">605年</td><td class="event">科举制创立</td><td class="significance">打破门第限制，扩大统治基础</td></tr>
+      <tr><td class="year">627-649年</td><td class="event">贞观之治</td><td class="significance">唐太宗李世民，政治清明、经济发展</td></tr>
+      <tr><td class="year">713-741年</td><td class="event">开元盛世</td><td class="significance">唐玄宗前期，唐朝全盛时期</td></tr>
+      <tr><td class="year">755年</td><td class="event">安史之乱</td><td class="significance">唐朝由盛转衰的转折点</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="period">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">五</span>宋元 <span class="years">960~1368年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">北宋（重文轻武、商品经济繁荣、交子）→ 辽/西夏/金并立 → 南宋（经济重心南移完成）→ 蒙古崛起 → 元（行省制、宣政院管辖西藏、回族形成）。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">北宋</td><td class="event">交子出现</td><td class="significance">世界上最早的纸币</td></tr>
+      <tr><td class="year">南宋</td><td class="event">经济重心南移完成</td><td class="significance">"苏湖熟，天下足"</td></tr>
+      <tr><td class="year">1271年</td><td class="event">元朝建立</td><td class="significance">忽必烈，行省制度影响至今</td></tr>
+      <tr><td class="year">元</td><td class="event">宣政院</td><td class="significance">中央正式管辖西藏的开始</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="period">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">六</span>明清（前期） <span class="years">1368~1840年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">明（废丞相、设厂卫、八股取士、郑和下西洋、戚继光抗倭）→ 清前期（军机处强化皇权、闭关锁国、统一多民族国家巩固）。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">1405-1433年</td><td class="event">郑和下西洋</td><td class="significance">世界航海史上的壮举，加强中外交流</td></tr>
+      <tr><td class="year">明朝</td><td class="event">废丞相、设内阁</td><td class="significance">君主专制空前加强</td></tr>
+      <tr><td class="year">清朝</td><td class="event">军机处</td><td class="significance">君主专制达到顶峰</td></tr>
+      <tr><td class="year">1757年</td><td class="event">闭关锁国</td><td class="significance">仅留广州一口通商，导致中国逐渐落后于世界</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ====== 八年级 ====== -->
+<section class="grade-section" id="g8">
+<div class="grade-head"><div class="grade-badge" style="background:#a88870;">八</div><h2>八年级 · 中国近现代史</h2></div>
+
+<div class="period open">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">七</span>旧民主主义革命 <span class="years">1840~1919年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">鸦片战争（近代史开端）→ 第二次鸦片战争 → 洋务运动 → 甲午中日战争 → 戊戌变法 → 八国联军侵华 → 辛亥革命 → 新文化运动。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">1840-1842年</td><td class="event">鸦片战争</td><td class="significance">中国近代史开端，《南京条约》（第一个不平等条约）</td></tr>
+      <tr><td class="year">19世纪60-90年代</td><td class="event">洋务运动</td><td class="significance">"自强求富"，中国近代化的开端</td></tr>
+      <tr><td class="year">1894-1895年</td><td class="event">甲午中日战争</td><td class="significance">《马关条约》，大大加深中国半殖民地化</td></tr>
+      <tr><td class="year">1898年</td><td class="event">戊戌变法</td><td class="significance">康有为梁启超，思想启蒙作用</td></tr>
+      <tr><td class="year">1911年</td><td class="event">辛亥革命</td><td class="significance">推翻清朝，结束封建帝制，建立中华民国</td></tr>
+      <tr><td class="year">1915年</td><td class="event">新文化运动</td><td class="significance">"民主""科学"两面旗帜，思想大解放</td></tr>
+    </table>
+    <div class="callout pitfall">洋务运动是"自强求富"不是"民主共和"！洋务派维护封建制度，只学技术不学制度。辛亥革命才是推翻帝制。</div>
+  </div>
+</div>
+
+<div class="period open">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">八</span>新民主主义革命 <span class="years">1919~1949年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">五四运动（新民主主义革命开端）→ 中共成立 → 国民革命/北伐 → 国共十年对峙（南昌起义、长征、遵义会议）→ 全面抗战（1937-1945）→ 解放战争（1946-1949）。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">1919年</td><td class="event">五四运动</td><td class="significance">新民主主义革命的开端，工人阶级登上政治舞台</td></tr>
+      <tr><td class="year">1921年</td><td class="event">中共一大</td><td class="significance">中国共产党成立（上海→嘉兴南湖）</td></tr>
+      <tr><td class="year">1927年8月1日</td><td class="event">南昌起义</td><td class="significance">武装反抗国民党反动派的第一枪，建军节由来</td></tr>
+      <tr><td class="year">1934-1936年</td><td class="event">红军长征</td><td class="significance">遵义会议（1935）是党的生死攸关转折点</td></tr>
+      <tr><td class="year">1937-1945年</td><td class="event">全面抗日战争</td><td class="significance">近代以来第一次完全胜利的民族解放战争</td></tr>
+      <tr><td class="year">1949年4月</td><td class="event">渡江战役</td><td class="significance">解放南京，国民党政权覆灭</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="period">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">九</span>中华人民共和国 <span class="years">1949年至今</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">开国大典（1949.10.1）→ 土地改革 → 抗美援朝 → 一五计划 → 三大改造（社会主义制度确立）→ 改革开放（1978十一届三中全会）→ 新时代。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">1949.10.1</td><td class="event">开国大典</td><td class="significance">中华人民共和国成立，中国人民站起来了</td></tr>
+      <tr><td class="year">1950-1952年</td><td class="event">土地改革</td><td class="significance">废除封建土地制度，农民成为土地的主人</td></tr>
+      <tr><td class="year">1953-1957年</td><td class="event">一五计划</td><td class="significance">开始改变工业落后面貌，向社会主义工业化迈进</td></tr>
+      <tr><td class="year">1956年</td><td class="event">三大改造完成</td><td class="significance">生产资料私有制→公有制，社会主义制度确立</td></tr>
+      <tr><td class="year">1978年</td><td class="event">十一届三中全会</td><td class="significance">改革开放的开端，伟大历史转折</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ====== 九年级 ====== -->
+<section class="grade-section" id="g9">
+<div class="grade-head"><div class="grade-badge" style="background:#987860;">九</div><h2>九年级 · 世界史</h2></div>
+
+<div class="period open">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十</span>世界古代史 <span class="years">远古~1500年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <table class="tbl">
+      <tr><th class="year">文明/事件</th><th class="event">核心内容</th><th class="significance">影响</th></tr>
+      <tr><td class="year">古埃及</td><td class="event">金字塔、象形文字、太阳历</td><td class="significance">尼罗河的赠礼</td></tr>
+      <tr><td class="year">古巴比伦</td><td class="event">《汉谟拉比法典》</td><td class="significance">迄今已知第一部较完整的成文法典</td></tr>
+      <tr><td class="year">古印度</td><td class="event">种姓制度、佛教</td><td class="significance">释迦牟尼创立佛教</td></tr>
+      <tr><td class="year">古希腊</td><td class="event">雅典民主政治</td><td class="significance">伯里克利时代，公民大会是最高权力机构</td></tr>
+      <tr><td class="year">古罗马</td><td class="event">《十二铜表法》、罗马帝国</td><td class="significance">罗马法对后世影响深远</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="period open">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十一</span>世界近代史 <span class="years">1500~1917年</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">文艺复兴（人文主义）→ 新航路开辟 → 资产阶级革命（英/美/法）→ 工业革命 → 马克思主义 → 明治维新 → 一战。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">14-16世纪</td><td class="event">文艺复兴</td><td class="significance">核心思想：人文主义。但丁《神曲》、达·芬奇</td></tr>
+      <tr><td class="year">15-16世纪</td><td class="event">新航路开辟</td><td class="significance">哥伦布发现美洲，世界开始连为一个整体</td></tr>
+      <tr><td class="year">1640-1688年</td><td class="event">英国资产阶级革命</td><td class="significance">《权利法案》，君主立宪制确立</td></tr>
+      <tr><td class="year">1775-1783年</td><td class="event">美国独立战争</td><td class="significance">《独立宣言》，1787年宪法（三权分立）</td></tr>
+      <tr><td class="year">1789年</td><td class="event">法国大革命</td><td class="significance">《人权宣言》，传播民主自由思想</td></tr>
+      <tr><td class="year">18世纪60年代</td><td class="event">工业革命</td><td class="significance">瓦特改良蒸汽机，人类进入"蒸汽时代"</td></tr>
+      <tr><td class="year">1848年</td><td class="event">《共产党宣言》</td><td class="significance">马克思主义诞生</td></tr>
+      <tr><td class="year">1868年</td><td class="event">明治维新</td><td class="significance">日本走上资本主义道路，脱亚入欧</td></tr>
+      <tr><td class="year">1914-1918年</td><td class="event">第一次世界大战</td><td class="significance">萨拉热窝事件导火线，同盟国vs协约国</td></tr>
+    </table>
+    <div class="callout pitfall">英国是君主立宪制，美国是总统共和制（三权分立），两国政体不同。英国《权利法案》限制王权，美国《独立宣言》宣告独立。</div>
+  </div>
+</div>
+
+<div class="period">
+  <div class="period-head" onclick="this.parentElement.classList.toggle('open')"><span class="num">十二</span>世界现代史 <span class="years">1917年至今</span><span class="arrow">▼</span></div>
+  <div class="period-body">
+    <div class="overview">俄国十月革命（第一个社会主义国家）→ 经济大危机 + 罗斯福新政 → 二战（1939-1945）→ 冷战（美苏两极格局）→ 多极化趋势 → 经济全球化。</div>
+    <table class="tbl">
+      <tr><th class="year">时间</th><th class="event">事件</th><th class="significance">意义</th></tr>
+      <tr><td class="year">1917年</td><td class="event">俄国十月革命</td><td class="significance">第一个社会主义国家诞生</td></tr>
+      <tr><td class="year">1929-1933年</td><td class="event">经济大危机</td><td class="significance">罗斯福新政，国家干预经济新模式</td></tr>
+      <tr><td class="year">1939-1945年</td><td class="event">第二次世界大战</td><td class="significance">联合国家宣言→雅尔塔会议→联合国成立</td></tr>
+      <tr><td class="year">1947-1991年</td><td class="event">冷战</td><td class="significance">杜鲁门主义、马歇尔计划、北约vs华约</td></tr>
+      <tr><td class="year">1991年</td><td class="event">苏联解体</td><td class="significance">冷战结束，两极格局终结</td></tr>
+      <tr><td class="year">1995年</td><td class="event">WTO成立</td><td class="significance">经济全球化的重要标志</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ====== 易错 Top 10 ====== -->
+<section id="pitfalls">
+<div class="grade-head"><div class="grade-badge" style="background:#c4947a;">!</div><h2>历史易错点 Top 10</h2></div>
+<div class="period open"><div class="period-body">
+<ol class="pitfall-list">
+<li><strong>中国近代史开端</strong>——是1840年鸦片战争，不是1919年五四运动。五四运动是新民主主义革命的开端。</li>
+<li><strong>洋务运动 vs 戊戌变法</strong>——洋务派维护封建制度（学技术不学制度），维新派主张君主立宪（学制度）。性质不同。</li>
+<li><strong>辛亥革命推翻的是封建帝制</strong>——而不是封建制度。封建土地制度到1952年土地改革完成才彻底废除。</li>
+<li><strong>遵义会议（1935年）vs 十一届三中全会（1978年）</strong>——遵义会议是党生死攸关转折点（革命时期），十一届三中全会是伟大历史转折（建设时期）。</li>
+<li><strong>新民主主义革命时期</strong>——1919年五四运动到1949年新中国成立，不是1840年。</li>
+<li><strong>英国《权利法案》vs 美国《独立宣言》vs 法国《人权宣言》</strong>——不能混淆！英国是限制王权、美国是宣告独立、法国是天赋人权。</li>
+<li><strong>经济重心南移完成</strong>——南宋时期，不是隋唐。北人南迁从魏晋开始，到南宋完成。</li>
+<li><strong>闭关锁国</strong>——清朝仅留广州一口通商，不是完全封闭。但使中国逐渐落后于世界潮流。</li>
+<li><strong>世界开始连为一个整体</strong>——新航路开辟（15-16世纪），不是工业革命。工业革命改变了生产方式。</li>
+<li><strong>冷战</strong>——美苏之间的对抗，不是热战。主要形式：杜鲁门主义、马歇尔计划、北约vs华约、军备竞赛。</li>
+</ol></div></div>
+</section>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer class="footer"><a href="index.html">← 返回首页</a>&emsp;初中历史基础知识清单 · 人教版六册 · 中考复习用</footer>
+
+<script>
+(function(){
+var bt=document.getElementById('backTop');
+window.addEventListener('scroll',function(){bt.classList.toggle('show',window.scrollY>400);});
+var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.topbar a[href^="#"]');
+window.addEventListener('scroll',function(){var cur='';secs.forEach(function(s){if(window.scrollY>=s.offsetTop-120)cur=s.id;});links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});});
+})();
+</script>
+</body>
+</html>
